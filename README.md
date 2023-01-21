@@ -6,4 +6,4 @@ PropertyProbe will be a powerful tool for real estate investors and professional
 ## Frontend Enginers:
 Jacob Kanfer, Akshay Ashok
 ## Backend Enginers:
-Carson Schmid, Julien Wakim
+Carson Schmidt, Julien Wakim
