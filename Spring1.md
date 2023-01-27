@@ -1,4 +1,4 @@
-# Spring 1
+# Sprint 1
 
 **What we planned:** stuff
 
