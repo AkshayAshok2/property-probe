@@ -1,0 +1,26 @@
+<div>
+  <div> 
+    <div>Owner</div>
+    <input 
+      [(ngModel)]="owner"
+      type="text" 
+      placeholder="Enter the owner">
+  </div>
+  <div>
+    <div>Address</div>
+    <input 
+    [(ngModel)]="address"
+      type ="text" 
+      placeholder="Enter the address">
+  </div>
+  <button (click) ="addProperty()"> Add Property Listing </button>
+</div>
+
+<br>
+<br>
+<br>
+
+<div *ngFor="let propertyListing of propertyListing">
+  <div> {{ propertyListing.owner }} </div> 
+  <div> {{ propertyListing.address }} </div>
+</div>
