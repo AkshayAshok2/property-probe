@@ -4,6 +4,7 @@ import { provideProtractorTestingSupport } from '@angular/platform-browser';
 import { interval, take, lastValueFrom } from 'rxjs';
 
 interface IPropertyListing {
+  search_term: string
   owner: string
   address: string
 }
@@ -14,6 +15,7 @@ interface IPropertyListing {
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit{
+  public search_term = ''
   public owner = ''
   public address = ''
   public propertyListing: IPropertyListing[] = []
