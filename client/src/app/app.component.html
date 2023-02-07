@@ -1,28 +1,16 @@
 <!--New HTML-->
 <div class="app-root">
   <div class="input-container">
-      <img class="img-responsive" src="../assets/images/PropertyProbe-logo2.png">
-      <input class="homeSearchBar"
-        [(ngModel)]="search_term" 
-        type="text"
-        placeholder="Search properties">
-      <button>Search</button>
+    <img class="img-responsive" src="../assets/images/PropertyProbe-logo2.png">
+    <input
+      [(ngModel)]="search_term" 
+      type="text"
+      placeholder="Search properties">
+    <button (click)="search()">Search</button>
   </div>
 
-  <nav class="navbar navbar-light bg-faded">
-    <a class="navbar-brand" href="/#/">Explore</a>
-    <ul class="nav navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link" href="/#/">Mama</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/#/search">Search</a>
-      </li>
-    </ul>
-  </nav>
-
   <!--Wakim's HTML-->
-  <div>
+  <!-- <div>
     <div> 
       <div>Owner</div>
       <input 
@@ -37,15 +25,16 @@
         type ="text" 
         placeholder="Enter the address">
     </div>
-    <button (click) ="addProperty()"> Add Property Listing </button>
-  </div>
+    <button (click)="addProperty()"> Add Property Listing </button>
+  </div> -->
 
   <br>
   <br>
   <br>
 
   <div *ngFor="let propertyListing of propertyListing">
-    <div>Owner: {{ propertyListing.owner }} </div> 
-    <div>Address: {{ propertyListing.address }} </div>
+    <div>SearchTerm: {{ propertyListing.search_term }}</div>
+    <!-- <div>Owner: {{ propertyListing.owner }} </div> 
+    <div>Address: {{ propertyListing.address }} </div> -->
   </div>
 </div>

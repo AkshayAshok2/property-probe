@@ -9,8 +9,9 @@ type Adder interface {
 }
 
 type Property struct {
-	Owner   string `json:"owner"`
-	Address string `json:"address"`
+	SearchTerm string `json:"search_term"`
+	// Owner      string `json:"owner"`
+	// Address    string `json:"address"`
 }
 
 type Repo struct {
