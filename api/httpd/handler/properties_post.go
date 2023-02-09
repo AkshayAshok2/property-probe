@@ -8,8 +8,9 @@ import (
 )
 
 type PropertiesPostRequest struct {
-	Owner   string `json:"owner"`
-	Address string `json:"address"`
+	SearchTerm string `json:"search_term"`
+	// Owner      string `json:"owner"`
+	// Address    string `json:"address"`
 }
 
 func PropertiesPost(housing properties.Adder) gin.HandlerFunc {
@@ -18,8 +19,9 @@ func PropertiesPost(housing properties.Adder) gin.HandlerFunc {
 		c.Bind(&requestBody)
 
 		property := properties.Property{
-			Owner:   requestBody.Owner,
-			Address: requestBody.Address,
+			SearchTerm: requestBody.SearchTerm,
+			// Owner:      requestBody.Owner,
+			// Address:    requestBody.Address,
 		}
 
 		housing.Add(property)
