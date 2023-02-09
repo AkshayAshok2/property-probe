@@ -5,8 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule} from '@angular/common/http'
 // import the MapsModule for the Maps component
-import { MapsModule } from '@syncfusion/ej2-angular-maps';
-import { AppComponent }  from './app.component';
+// import { MapsModule } from '@syncfusion/ej2-angular-maps';
 
 @NgModule({
   declarations: [
@@ -16,7 +15,7 @@ import { AppComponent }  from './app.component';
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    MapsModule
+    // MapsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
