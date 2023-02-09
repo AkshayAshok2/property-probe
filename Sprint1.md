@@ -5,7 +5,7 @@
 
 * Set up Angular environment
 * Implement search functionality
-* 
+
 > Backend
 
 * Set up Go, Angular-Go API, and SQL server
