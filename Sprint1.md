@@ -1,10 +1,27 @@
 # Sprint 1
 
-**What we planned:** stuff
+**What we planned:**
+> Frontend
 
-**What we accomplished:** more stuff
+* Set up Angular environment
+* Implement search functionality
+* 
+> Backend
 
-**What didn't work:** even more stuff
+* Set up Go, Angular-Go API, and SQL server
+* Scrape data for property listings
+
+**What we accomplished:**
+
+* Set up Angular/Go/MySQL functionally
+* First half of a CRUD API
+* Basic searchbar mechanism
+
+**What didn't work:**
+
+* Underestimated time needed to become familiar with Angular/Go/MySQL
+* Issues with scraping and collecting data
+* Couldn't move forward with property reports due to scraping issues
 
 # User Stories
 
