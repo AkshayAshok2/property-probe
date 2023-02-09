@@ -47,15 +47,15 @@ func connectAndLoadData(w http.ResponseWriter, r *http.Request) {
 func main() {
 	http.HandleFunc("/CreateStuff",connectAndLoadData)
 	log.Fatal(http.ListenAndServe(":8080", nil))
-	/*c := colly.NewCollector(colly.AllowedDomains("alachua.realforeclose.com"))
+	c := colly.NewCollector(colly.AllowedDomains("alachua.realforeclose.com"))
 
-	/*for i := 1; i < 31; i++ {
+	for i := 1; i < 31; i++ {
 	if i < 10{
 		var date string = "0" + strconv.Itoa(i)
 	} else {
 		var date string = strconv.Itoa(i)
 	}
-	*/
+	
 
 	//Initializes the days and strings to loop through the urls and gather foreclosure data for each day
 	//var month string = "02"
@@ -76,7 +76,7 @@ func main() {
 			}
 		}
 	}
-	
+	*/
 
 	scrapeURL := "https://alachua.realforeclose.com/index.cfm?zaction=AUCTION&Zmethod=PREVIEW&AUCTIONDATE=" + month + "/" + day + "/2022"
 
@@ -95,7 +95,7 @@ func main() {
 	})
 
 	c.OnHTML("tbody tr", func(e *colly.HTMLElement) {
-		fmt.Print("Childe: ")
+		fmt.Print("Child: ")
 		fmt.Println(e.ChildText)
 
 	})
