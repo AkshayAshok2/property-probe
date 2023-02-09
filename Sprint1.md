@@ -1,7 +1,18 @@
 # Sprint 1
 
-**What we planned:** stuff
+**What we planned:**
+> Frontend
+* Set up Angular environment
+* Visual mock-up
+* Search bar working
 
-**What we accomplished:** more stuff
+> Backend
+* Set up Go and API w/ Angular
+* Set up SQL server
+* Scraper
 
-**What didn't work:** even more stuff
+**What we accomplished:**
+* 
+
+**What didn't work:**
+* 
