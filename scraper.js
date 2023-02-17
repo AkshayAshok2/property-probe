@@ -33,6 +33,7 @@ const puppeteer = require('puppeteer');
     //space out each auction item
     console.log("\n");
   }
+  // Add in to add to a text file to parse from node script-file.js >properties.txt 2>error-file.txt
 
   await browser.close();
 })();
