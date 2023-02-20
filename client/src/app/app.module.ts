@@ -5,12 +5,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule} from '@angular/common/http'
 // import the MapsModule for the Maps component
-import { mapMaker } from './map/map.component'
+import { mapMaker } from './map/map.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { SearchComponent } from './navbar/search/search.component'
 
 @NgModule({
   declarations: [
     AppComponent,
-    mapMaker
+    mapMaker,
+    NavbarComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
