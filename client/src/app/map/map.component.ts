@@ -3,17 +3,16 @@ import Map from 'ol/Map';
 import View from 'ol/View';
 import TileLayer from 'ol/layer/Tile';
 import OSM from 'ol/source/OSM';
-import {fromLonLat} from 'ol/proj.js';
+import { fromLonLat } from 'ol/proj.js';
 
 @Component({
   selector: 'map-root',
   templateUrl: './map.component.html',
   styleUrls: ['./map.component.css'],
 })
-
 export class mapMaker implements OnInit {
 
-  map: Map;
+  map: Map = new Map;
 
   ngOnInit(): void {
     this.map = new Map({
