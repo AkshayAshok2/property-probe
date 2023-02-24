@@ -38,8 +38,40 @@ func main() {
 	if result.Error != nil {
 		panic(result.Error)
 	}
+	/*migrator := db.Migrator()
+	err = migrator.DropColumn(&Property{}, "Owner")
+	err = migrator.DropColumn(&Property{}, "Address")
+	if err != nil {
+		panic(err)
+	}*/
+	model := db.Model(&Property{})
+	var addresses []string
+	err = model.Pluck("property_address", &addresses).Error
+	if err != nil {
+		panic(err)
+	}
+
+	// Print out the data from the "owner" column
+	fmt.Println("Data in the 'property_address' column:")
+	for _, address := range addresses {
+		fmt.Println(address)
+	}
+
+	// Use GORM's Pluck function to get all the data from the "address" column
+	var auctions []string
+	err = model.Pluck("auction_type", &auctions).Error
+	if err != nil {
+		panic(err)
+	}
+
+	// Print out the data from the "address" column
+	fmt.Println("Data in the 'auction_type' column:")
+	for _, auction := range auctions {
+		fmt.Println(auction)
+	}
 
 	fmt.Println("Successfully inserted property data into MySQL database")
+
 }
 
 /*
