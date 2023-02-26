@@ -8,10 +8,9 @@ import (
 	"log"
 	"net/http"
 
+	"github.com/gin-gonic/gin"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
-
-	"github.com/gin-gonic/gin"
 )
 
 // DB TESTING
@@ -49,7 +48,7 @@ func main() {
 
 	api := r.Group("/api")
 	{
-		api.GET("/ping", handler.PingGet())
+		// api.GET("/ping", handler.PingGet())
 		api.GET("/properties", handler.PropertiesGet(housing))
 		api.POST("/properties", handler.PropertiesPost(housing))
 	}
