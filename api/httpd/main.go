@@ -2,7 +2,7 @@ package main
 
 import (
 	"PropertyProbe/httpd/handler"
-	"PropertyProbe/platform/properties"
+	"PropertyProbe/platform/search"
 	"encoding/json"
 	"fmt"
 	"log"
@@ -42,15 +42,15 @@ func main() {
 	// http.HandleFunc("/testDB", GoDatabaseCreate)
 	// log.Fatal(http.ListenAndServe(":8080", nil))
 
-	housing := properties.New()
+	searchHistory := search.New()
 
 	r := gin.Default()
 
 	api := r.Group("/api")
 	{
 		// api.GET("/ping", handler.PingGet())
-		api.GET("/properties", handler.PropertiesGet(housing))
-		api.POST("/properties", handler.PropertiesPost(housing))
+		api.GET("/search", handler.SearchGet(searchHistory))
+		api.POST("/search", handler.SearchPost(searchHistory))
 	}
 
 	r.Run("0.0.0.0:5000")
