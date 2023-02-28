@@ -5,12 +5,15 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
+	"gorm.io/gorm"
 )
 
 type PropertiesPostRequest struct {
-	SearchTerm string `json:"search_term"`
-	// Owner      string `json:"owner"`
-	// Address    string `json:"address"`
+	gorm.Model
+	AuctionType     string `json:"auction_type"`
+	JudgementAmount string `json:"judgement_amount"`
+	Address         string `json:"property_address"`
+	AssessedValue   string `json:"assessedvalue"`
 }
 
 func PropertiesPost(housing properties.Adder) gin.HandlerFunc {
@@ -19,9 +22,10 @@ func PropertiesPost(housing properties.Adder) gin.HandlerFunc {
 		c.Bind(&requestBody)
 
 		property := properties.Property{
-			SearchTerm: requestBody.SearchTerm,
-			// Owner:      requestBody.Owner,
-			// Address:    requestBody.Address,
+			AuctionType:     requestBody.AuctionType,
+			JudgementAmount: requestBody.JudgementAmount,
+			Address:         requestBody.Address,
+			AssessedValue:   requestBody.AssessedValue,
 		}
 
 		housing.Add(property)
