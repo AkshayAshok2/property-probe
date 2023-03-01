@@ -1,12 +1,10 @@
 package handler
 
 import (
+	"PropertyProbe/database"
 	"PropertyProbe/platform/properties"
 	"errors"
-	"gorm-test/database"
-	"gorm-test/models"
 	"net/http"
-	"strconv"
 
 	"github.com/gin-gonic/gin"
 	"gorm.io/gorm"
@@ -44,9 +42,9 @@ func (repository *PropertyRepo) GetProperties(c *gin.Context) {
 }
 
 func (repository *PropertyRepo) GetProperty(c *gin.Context) {
-	id, _ := strconv.Atoi(c.Param("id"))
+	address := (c.Param("address"))
 	var property properties.Property
-	err := properties.GetProperty(repository.Db, &property, id)
+	err := properties.GetProperty(repository.Db, &property, address)
 	if err != nil {
 		if errors.Is(err, gorm.ErrRecordNotFound) {
 			c.AbortWithStatus(http.StatusNotFound)
@@ -61,8 +59,8 @@ func (repository *PropertyRepo) GetProperty(c *gin.Context) {
 
 func (repository *PropertyRepo) UpdateProperty(c *gin.Context) {
 	var property properties.Property
-	id, _ := strconv.Atoi(c.Param("id"))
-	err := properties.GetProperty(repository.Db, &property, id)
+	address := c.Param("address")
+	err := properties.GetProperty(repository.Db, &property, address)
 	if err != nil {
 		if errors.Is(err, gorm.ErrRecordNotFound) {
 			c.AbortWithStatus(http.StatusNotFound)
@@ -84,11 +82,11 @@ func (repository *PropertyRepo) UpdateProperty(c *gin.Context) {
 // delete user
 func (repository *PropertyRepo) DeleteProperty(c *gin.Context) {
 	var property properties.Property
-	id, _ := strconv.Atoi(c.Param("id"))
-	err := models.DeleteProperty(repository.Db, &property, id)
+	address := c.Param("address")
+	err := properties.DeleteProperty(repository.Db, &property, address)
 	if err != nil {
 		c.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{"error": err})
 		return
 	}
-	c.JSON(http.StatusOK, gin.H{"message": "User deleted successfully"})
+	c.JSON(http.StatusOK, gin.H{"message": "Property deleted successfully"})
 }

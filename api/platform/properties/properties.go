@@ -8,9 +8,8 @@ type Property struct {
 	gorm.Model
 	AuctionType     string `json:"auction_type"`
 	JudgementAmount string `json:"judgement_amount"`
-	Address         string `json:"property_address"`
+	Address         string `json:"address"`
 	AssessedValue   string `json:"assessedvalue"`
-	ID              int    `json:"id"`
 }
 
 func CreateProperty(db *gorm.DB, Property *Property) (err error) {
