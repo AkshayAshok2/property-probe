@@ -33,3 +33,7 @@ func connectDB() *gorm.DB {
 
 	return db
 }
+
+func getDB() *gorm.DB {
+	return Db
+}
