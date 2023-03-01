@@ -41,8 +41,8 @@ func UpdateProperty(db *gorm.DB, Property *Property) (err error) {
 	return nil
 }
 
-func DeleteProperty(db *gorm.DB, Property *Property, address string) (err error) {
-	db.Where("address = ?", address).Delete(Property)
+func DeleteProperty(db *gorm.DB, Property *Property) (err error) {
+	db.Delete(Property)
 	return nil
 }
 
