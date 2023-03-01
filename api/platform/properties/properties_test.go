@@ -54,6 +54,27 @@ func TestAdd(t *testing.T) {
 
 }
 
+func TestDelete(=(t *testing.T){
+	property := Property{
+		auction_type:     "auction_type_1",
+		judgement_amount: 1000.0,
+		address:          "123 Main St",
+		assessed_value:   5000.0,
+	}
+	// Insert the property into the database
+	Add(Connect(), property)
+	var sizeBeforeDelete = getSize(Connect())
+	DeleteProperty(Connect(), property)
+	var sizeAfterDelete = getSize(Connect())
+	if sizeAfterDelete >= sizeBeforeDelete {
+		t.Errorf("No property was deleted")
+	} else {
+		fmt.Println("Property Successfully Deleted")
+	}
+	
+	
+}
+
 /*func printPropertiesTableDetails(db *gorm.DB) {
 
 	var properties []Property
