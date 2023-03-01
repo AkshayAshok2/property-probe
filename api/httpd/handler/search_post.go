@@ -13,7 +13,7 @@ type SearchPostRequest struct {
 
 func SearchPost(searches search.Adder) gin.HandlerFunc {
 	return func(c *gin.Context) {
-		requestBody := PropertiesPostRequest{}
+		requestBody := SearchPostRequest{}
 		c.Bind(&requestBody)
 
 		searchterm := search.Search{
