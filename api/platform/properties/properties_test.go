@@ -2,19 +2,24 @@ package properties
 
 import "testing"
 
-func TestAdd(t *testing.T) {
-	housing := New()
-	housing.Add(Property{})
-	if len(housing.Properties) != 1 {
-		t.Errorf("Property was not added")
-	}
-}
+func (t *SuiteTest) TestCreateUser() {
+	_, err := CreateProperty(Property{
+		AuctionType: "AuctionTest",
+		JudgementAmount: "AmountTest",
+		Address: "AddressTest",
+		AssessedValue: "ValueTest"
+	})
+	assert.NoError(t.T(), err)
 
-func TestGetAll(t *testing.T) {
-	housing := New()
-	housing.Add(Property{})
-	results := housing.GetAll()
-	if len(results) != 1 {
-		t.Errorf("Property was not added")
-	}
+	_, err = service.UserCreate(entity.User{
+		Name:  "Second",
+		Email: "second@gmail.com",
+	})
+	assert.NoError(t.T(), err)
+
+	_, err = service.UserCreate(entity.User{
+		Name:  "Third",
+		Email: "second@gmail.com",
+	})
+	assert.Error(t.T(), err) // Duplicate Email Error
 }
