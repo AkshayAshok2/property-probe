@@ -9,3 +9,4 @@ import { interval, take, lastValueFrom } from 'rxjs';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {}
+
