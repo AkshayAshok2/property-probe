@@ -3,17 +3,17 @@
     background: white (50, 50, 50, 0.2);
     border: 0px solid #dbdbdb;
     height: 25px;
-    width: 100px;
+    width: 200px;
 }
 
 form {
-    width: 200px;
+    width: 300px;
     margin: 50px auto;
 }
 
 .container {
     padding: 4rem;
-    width: 40rem;
+    width: 100rem;
     margin: 0 auto;
   }
   
@@ -57,9 +57,7 @@ form {
     margin-right: auto;
     width: 7%;
     height: 75%;
-    background-color: darkcyan;
     border: none;
-    color: white;
   }
   
   .input-container input {

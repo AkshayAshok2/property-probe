@@ -8,6 +8,8 @@ import { HttpClientModule} from '@angular/common/http'
 import { mapMaker } from './map/map.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SearchComponent } from './navbar/search/search.component'
+// Change method of importing Material components using material module
+import { MaterialModule } from './material/material.module';
 
 @NgModule({
   declarations: [
@@ -20,6 +22,10 @@ import { SearchComponent } from './navbar/search/search.component'
     BrowserModule,
     FormsModule,
     HttpClientModule,
+<<<<<<< Updated upstream
+=======
+    MaterialModule
+>>>>>>> Stashed changes
   ],
   providers: [],
   bootstrap: [AppComponent]

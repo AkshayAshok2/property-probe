@@ -8,6 +8,7 @@
     text-align: center;
 }
 
+<<<<<<< Updated upstream
 form {
     width: 500px;
     margin: 50px auto;
@@ -82,3 +83,29 @@ form {
   .error-msg {
     color: red;
   }
+=======
+.flex-row-container {
+  
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+  }
+  .flex-row-container > .flex-row-item {
+    flex: 1 1 30%; /*grow | shrink | basis */
+    height: 500px;
+  }
+  
+  .flex-row-item {
+  background-color: #fff4e6;
+  border: 1px solid #000000;
+  text-align: center;
+  }    
+  @media  screen and (max-width:481px) {
+    .flex-row-container > .flex-row-item {
+      flex: 100%
+    }
+  }
+
+>>>>>>> Stashed changes

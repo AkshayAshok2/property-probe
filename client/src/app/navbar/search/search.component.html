@@ -1,5 +1,6 @@
 <!--New HTML-->
 <div class="app-search">
+<<<<<<< Updated upstream
     <div class="input-container">
       <input
         [(ngModel)]="search_term" 
@@ -14,4 +15,18 @@
       <div>Address: {{ propertyListing.address }} </div> -->
     </div>
   </div>
+=======
+  <div class="input-container">
+    <input
+      [(ngModel)]="search_term" 
+      type="text"
+      placeholder="Search properties">
+    <button mat-raised-button (click)="search()">Search</button>
+  </div>
+  <div *ngFor="let propertyListing of propertyListing">
+    <div>SearchTerm: {{ propertyListing.search_term }}</div>
+  </div>
+</div>
+
+>>>>>>> Stashed changes
   
