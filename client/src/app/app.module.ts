@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms'
+import { MatButtonModule } from '@angular/material/button'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule} from '@angular/common/http'
@@ -22,10 +23,7 @@ import { MaterialModule } from './material/material.module';
     BrowserModule,
     FormsModule,
     HttpClientModule,
-<<<<<<< Updated upstream
-=======
     MaterialModule
->>>>>>> Stashed changes
   ],
   providers: [],
   bootstrap: [AppComponent]

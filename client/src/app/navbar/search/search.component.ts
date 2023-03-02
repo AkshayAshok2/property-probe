@@ -23,9 +23,9 @@ export class SearchComponent implements OnInit {
     private httpClient: HttpClient
   ){}
 
-    async ngOnInit() {
-      await this.loadProperties()
-    }
+  async ngOnInit() {
+    await this.loadProperties()
+  }
 
   async loadProperties() {
     this.propertyListing = await lastValueFrom(this.httpClient.get<IPropertyListing[]>('/api/properties'))
