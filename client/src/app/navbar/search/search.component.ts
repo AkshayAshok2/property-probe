@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http'
+import { HttpClient } from '@angular/common/http';
+import { provideProtractorTestingSupport } from '@angular/platform-browser';
 import { interval, take, lastValueFrom } from 'rxjs';
 
-interface IPropertyListing {
+interface ISearchTerm {
   search_term: string
-  //owner: string
-  //address: string
 }
 
 @Component({
@@ -15,20 +14,18 @@ interface IPropertyListing {
 })
 export class SearchComponent implements OnInit {
   public search_term = ''
-  //public owner = ''
-  //public address = ''
-  public propertyListing: IPropertyListing[] = []
+  public searchHistory: ISearchTerm[] = []
 
   constructor(
     private httpClient: HttpClient
   ){}
 
   async ngOnInit() {
-    await this.loadProperties()
+    await this.loadSearches()
   }
 
-  async loadProperties() {
-    this.propertyListing = await lastValueFrom(this.httpClient.get<IPropertyListing[]>('/api/properties'))
+  async loadSearches() {
+    this.searchHistory = await lastValueFrom(this.httpClient.get<ISearchTerm[]>('/api/search'))
   }
 
   // async addProperty() {
@@ -44,11 +41,11 @@ export class SearchComponent implements OnInit {
   // }
 
   async search() {
-    await lastValueFrom(this.httpClient.post('/api/properties', {
+    await lastValueFrom(this.httpClient.post('/api/search', {
       search_term: this.search_term
     }))
 
-    await this.loadProperties()
+    await this.loadSearches()
     this.search_term = ''
   }
 }
