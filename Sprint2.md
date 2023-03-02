@@ -2,6 +2,7 @@
 
 Scraping: After weeks of trying to use the Go package of "colly", the backend and frontend team decided to take a different approach due to the fact the website was blocking access as it recognized the scraper as a bot. The first differnet approach was to attempt to use Python to scrape the data using the Selenium and Beautiful Soup libraries. After, this too did not pan out due to the same issue, Jacob Kanfer took the approach of JavaScript webscraping. As he had experience with this in the past, he was able to utilize setting user agents to get past the scraper walls and access the data correctly.  
 Integrating frontend and backend: We were able to connect the front end and backend smoothly utilizing a search function UI that allows the user to search for elements on the backend.
+
 Property API: Integrated all methods that will be crucial to utilizing our MYSQL database in the future including add, remove, search, update. The next step in this will be connecting the properties on the backend to the frontend.
 
 
