@@ -11,8 +11,11 @@
 
 ### Frontend Unit Tests:
 
+* Testing input/output of search bar and functionality of search button.
 
 ### Frontend Cypress Test:
+
+* Testing rendering of components.
 
 ### Backend Unit Tests: 
 &nbsp;&nbsp;&nbsp;&nbsp;**search_test.go:**
