@@ -21,24 +21,12 @@ export class SearchComponent implements OnInit {
   ){}
 
   async ngOnInit() {
-    await this.loadSearches()
+    // await this.loadSearches()
   }
 
   async loadSearches() {
     this.searchHistory = await lastValueFrom(this.httpClient.get<ISearchTerm[]>('/api/search'))
   }
-
-  // async addProperty() {
-  //   await lastValueFrom(this.httpClient.post('/api/properties', {
-  //     //owner: this.owner,
-  //     //address: this.address
-  //   }))
-    
-  //   await this.loadProperties()
-  //   this.search_term = ''
-  //   this.owner = ''
-  //   this.address = ''
-  // }
 
   async search() {
     await lastValueFrom(this.httpClient.post('/api/search', {
