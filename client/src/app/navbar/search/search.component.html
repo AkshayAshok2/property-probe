@@ -1,20 +1,14 @@
 <!--New HTML-->
-<html>
-  <div class="app-search">
+<div class="app-search">
   <div class="input-container">
-      <input
-        [(ngModel)]="search_term" 
-        type="text"
-        placeholder="Search properties">
-      <button (click)="search()">Search</button>
-      <button>Sign In / Register</button>
-    </div>
-    <div *ngFor="let propertyListing of propertyListing">
-      <div>SearchTerm: {{ propertyListing.search_term }}</div>
-      <!-- <div>Owner: {{ propertyListing.owner }} </div> 
-      <div>Address: {{ propertyListing.address }} </div> -->
-    </div>
-    <button>Howdy</button>
+    <input
+      [(ngModel)]="search_term" 
+      type="text"
+      placeholder="Search properties">
+    <button mat-raised-button (click)="search()">Search</button>
   </div>
-</html>
+  <div *ngFor="let propertyListing of propertyListing">
+    <div>SearchTerm: {{ propertyListing.search_term }}</div>
+  </div>
+</div>
   
