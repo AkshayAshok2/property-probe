@@ -6,7 +6,7 @@
 
 **Property API:** Integrated all methods that will be crucial to utilizing our MYSQL database in the future including add, remove, search, update. The next step in this will be connecting the properties on the backend to the frontend, as well as adding all the scraping data.
 
-**Frontend Progress:** Began familarizing with Angular Material, and possibly adding User Authentication. Also added a map which will display properties that has been scraped.
+**Frontend Progress:** Established modularization for the Angular components. Successfully added Material after some version and download issues. Also added a map which will display properties that has been scraped. Began authoring unit tests. Altogether cleaned up UI and lay the path for expediting writing other components.
 
 
 ### Frontend Unit Tests:
