@@ -1,111 +1,141 @@
-package main
+package properties
 
 import (
-	"fmt"
 	"testing"
 
+	"github.com/stretchr/testify/assert"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 )
 
-func Connect() *gorm.DB {
+func TestCreateProperty(t *testing.T) {
 	dsn := "go:Gators123@tcp(cen3031-project.mysql.database.azure.com:3306)/listings?charset=utf8mb4&parseTime=True&loc=Local"
 	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
-	if err != nil {
-		panic(err)
+	assert.NoError(t, err)
+	assert.NotNil(t, db)
+
+	// Migrate the database schema
+	err = db.AutoMigrate(Property{})
+	assert.NoError(t, err)
+
+	prop := Property{
+		AuctionType:     "private",
+		JudgementAmount: 12345.67,
+		Address:         "123 Main Street",
+		AssessedValue:   9876.54,
 	}
-	return db
+	err = CreateProperty(db, &prop)
+	assert.NoError(t, err)
+	assert.NotZero(t, prop.AssessedValue)
+
+	DeleteProperty(db, &prop, prop.Address)
 }
 
-func Add(db *gorm.DB, property Property) {
-	result := db.Create(property)
-	if result.Error != nil {
-		panic(result.Error)
+func TestGetProperties(t *testing.T) {
+	dsn := "go:Gators123@tcp(cen3031-project.mysql.database.azure.com:3306)/listings?charset=utf8mb4&parseTime=True&loc=Local"
+	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
+	assert.NoError(t, err)
+	assert.NotNil(t, db)
+
+	// Migrate the database schema
+	err = db.AutoMigrate(Property{})
+	assert.NoError(t, err)
+
+	prop := Property{
+		AuctionType:     "private",
+		JudgementAmount: 12345.67,
+		Address:         "123 Main Street",
+		AssessedValue:   9876.54,
+	}
+	CreateProperty(db, &prop)
+
+	// Get all properties
+	var props []Property
+	err = GetProperties(db, &props)
+	assert.NoError(t, err)
+	assert.Len(t, props, 1)
+
+	DeleteProperty(db, &prop, prop.Address)
+}
+
+func TestUpdateProperty(t *testing.T) {
+	dsn := "go:Gators123@tcp(cen3031-project.mysql.database.azure.com:3306)/listings?charset=utf8mb4&parseTime=True&loc=Local"
+	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
+	assert.NoError(t, err)
+	assert.NotNil(t, db)
+
+	// Migrate the database schema
+	err = db.AutoMigrate(Property{})
+	assert.NoError(t, err)
+
+	prop := Property{
+		AuctionType:     "private",
+		JudgementAmount: 12345.67,
+		Address:         "123 Main Street",
+		AssessedValue:   9876.54,
+	}
+	CreateProperty(db, &prop)
+	prop.JudgementAmount = 55555.55
+	err = UpdateProperty(db, &prop)
+	assert.NoError(t, err)
+
+	DeleteProperty(db, &prop, "123 Main Street")
+}
+
+func TestDeleteProperty(t *testing.T) {
+	dsn := "go:Gators123@tcp(cen3031-project.mysql.database.azure.com:3306)/listings?charset=utf8mb4&parseTime=True&loc=Local"
+	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
+	assert.NoError(t, err)
+	assert.NotNil(t, db)
+
+	// Migrate the database schema
+	err = db.AutoMigrate(Property{})
+	assert.NoError(t, err)
+
+	prop := Property{
+		AuctionType:     "private",
+		JudgementAmount: 12345.67,
+		Address:         "123 Main Street",
+		AssessedValue:   9876.54,
 	}
 
-}
-func getSize(db *gorm.DB) int {
-	var properties []Property
-	resultCheckFirst := db.Find(&properties)
-	if resultCheckFirst.Error != nil {
-		panic(resultCheckFirst.Error)
-	}
-	return len(properties)
+	CreateProperty(db, &prop)
+
+	// Delete a property
+	delete := &Property{}
+	err = DeleteProperty(db, delete, prop.Address)
+	assert.NoError(t, err)
+
+	// Get all properties again (should be empty)
+	var props []Property
+	err = GetProperties(db, &props)
+	assert.NoError(t, err)
+	assert.Len(t, props, 0)
 }
 
-func TestAdd(t *testing.T) {
-	//Size before add function
-	var sizeInitial = getSize(Connect())
-	//Creates example property to add
+func TestGetProperty(t *testing.T) {
+	dsn := "go:Gators123@tcp(cen3031-project.mysql.database.azure.com:3306)/listings?charset=utf8mb4&parseTime=True&loc=Local"
+	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
+	assert.NoError(t, err)
+	assert.NotNil(t, db)
+
+	// Migrate the database schema
+	err = db.AutoMigrate(Property{})
+	assert.NoError(t, err)
+
 	property := Property{
-		auction_type:     "auction_type_1",
-		judgement_amount: 1000.0,
-		address:          "123 Main St",
-		assessed_value:   5000.0,
-	}
-	// Insert the property into the database
-	Add(Connect(), property)
-	var sizeAfter = getSize(Connect())
-	if sizeAfter <= sizeInitial {
-		t.Errorf("No property was added")
-	} else {
-		fmt.Println("Property Successfully Added")
+		AuctionType:     "private",
+		JudgementAmount: 12345.67,
+		Address:         "123 Main Street",
+		AssessedValue:   9876.54,
 	}
 
-}
+	CreateProperty(db, &property)
 
-func TestDelete(=(t *testing.T){
-	property := Property{
-		auction_type:     "auction_type_1",
-		judgement_amount: 1000.0,
-		address:          "123 Main St",
-		assessed_value:   5000.0,
-	}
-	// Insert the property into the database
-	Add(Connect(), property)
-	var sizeBeforeDelete = getSize(Connect())
-	DeleteProperty(Connect(), property)
-	var sizeAfterDelete = getSize(Connect())
-	if sizeAfterDelete >= sizeBeforeDelete {
-		t.Errorf("No property was deleted")
-	} else {
-		fmt.Println("Property Successfully Deleted")
-	}
-	
-	
-}
+	found := &Property{}
+	err = GetProperty(db, found, "123 Main Street")
+	assert.NoError(t, err)
+	assert.Equal(t, found.Address, "123 Main Street")
 
-/*func printPropertiesTableDetails(db *gorm.DB) {
-
-	var properties []Property
-	resultCheck := db.Find(&properties)
-	if resultCheck.Error != nil {
-		panic(resultCheck.Error)
-	}
-
-	for _, property := range properties {
-		fmt.Println("ID: %d, AuctionType: %s, JudgementAmount: %f, PropertyAddress: %s, AssessedValue: %f\n",
-			property.auction_type, property.judgement_amount, property.address, property.assessed_value)
-	}
-}*/
-
-type Property struct {
-	auction_type     string
-	judgement_amount float64
-	address          string
-	assessed_value   float64
-}
-
-func main() {
-	TestAdd(&testing.T{})
-
-	/*property := Property{
-			auction_type:     "auction_type_1",
-			judgement_amount: 1000.0,
-			address:          "123 Main St",
-			assessed_value:   5000.0,
-		}
-		Add(property)
-		printPropertiesTableDetails()
-	}*/
+	DeleteProperty(db, &property, property.Address)
 }
