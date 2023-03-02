@@ -1,3 +1,10 @@
+### Work Completed:
+
+After weeks of trying to use the Go package of "colly", the backend and frontend team decided to use
+
+
+
+
 ### Frontend Unit Tests:
 
 
