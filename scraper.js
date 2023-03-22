@@ -5,7 +5,7 @@ const fs = require('fs');
   //set scrape url
   const startDate = new Date(2023, 2, 20); 
   const endDate = new Date(2023, 3, 15);
-  fs.writeFileSync('output.txt', '');
+  fs.writeFileSync('properties.txt', '');
   
   //launch and wait for page to load
   const browser = await puppeteer.launch();
@@ -37,7 +37,7 @@ const fs = require('fs');
         // Loop through each auction item and print/add to txt file with all details
         for (let i = 0; i < auctionItems.length; i++) {
           console.log(formattedDate);
-          fs.appendFileSync('./output.txt', formattedDate + '\n');
+          fs.appendFileSync('./properties.txt', formattedDate + '\n');
           const auctionItem = auctionItems.eq(i);
           //Gets each data row from the table
           const tableRows = auctionItem.find('table tr');
@@ -48,17 +48,17 @@ const fs = require('fs');
               const data = $(row).find('td').text().trim();
               const data2 = $(tableRows.eq(index + 1)).find('td').text().trim();
               console.log(label, data, data2);
-              fs.appendFileSync('./output.txt', label + ' ' + data + ' ' + data2 + '\n');
+              fs.appendFileSync('./properties.txt', label + ' ' + data + ' ' + data2 + '\n');
             //Inserts the each row into the txt
             }else if(!(label === '')){
               const data = $(row).find('td').text().trim();
               console.log(label, data);
-              fs.appendFileSync('./output.txt', label + ' ' + data + '\n');
+              fs.appendFileSync('./properties.txt', label + ' ' + data + '\n');
           }
           });
           //space out each auction item
           console.log("\n");
-          fs.appendFileSync('./output.txt', '\n');
+          fs.appendFileSync('./properties.txt', '\n');
         }
 
       }catch{
