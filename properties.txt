@@ -132,3 +132,25 @@ Parcel ID: Property Appraiser
 Property Address: 21410 SE 122 LN HAWTHRONE, FL- 32640
 Plaintiff Max Bid: Hidden
 
+04/18/2023
+Auction Type: FORECLOSURE
+Case #: 01 2017 CA 002254
+Final Judgment Amount: $257,266.10
+Parcel ID: Property Appraiser
+Property Address: 15114 NW 134 TER ALACHUA, FL- 32615
+Plaintiff Max Bid: Hidden
+
+04/20/2023
+Auction Type: FORECLOSURE
+Case #: 01 2021 CA 000967
+Final Judgment Amount: $56,504.24
+Parcel ID: Property Appraiser
+Plaintiff Max Bid: Hidden
+
+04/20/2023
+Auction Type: FORECLOSURE
+Case #: 01 2022 CC 000623
+Final Judgment Amount: $6,703.97
+Parcel ID: Property Appraiser
+Plaintiff Max Bid: Hidden
+
