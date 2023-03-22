@@ -3,8 +3,9 @@ const fs = require('fs');
 
 (async () => {
   //set scrape url
-  const startDate = new Date(2023, 2, 20); 
-  const endDate = new Date(2023, 3, 15);
+  const startDate = new Date(); 
+  const endDate = new Date(startDate.getTime());
+  endDate.setDate(startDate.getDate() + 30);
   fs.writeFileSync('properties.txt', '');
   
   //launch and wait for page to load
