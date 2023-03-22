@@ -10,7 +10,7 @@ import { fromLonLat } from 'ol/proj.js';
   templateUrl: './map.component.html',
   styleUrls: ['./map.component.css'],
 })
-export class mapMaker implements OnInit {
+export class MapMaker implements OnInit {
 
   map: Map = new Map;
 
