@@ -5,7 +5,7 @@ const fs = require('fs');
   //set scrape url
   const startDate = new Date(); 
   const endDate = new Date(startDate.getTime());
-  endDate.setDate(startDate.getDate() + 30);
+  endDate.setDate(startDate.getDate() + 45);
   fs.writeFileSync('properties.txt', '');
   
   //launch and wait for page to load
