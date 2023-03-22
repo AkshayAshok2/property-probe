@@ -4,13 +4,9 @@ const fs = require('fs');
 (async () => {
   //set scrape url
   const startDate = new Date(); 
-<<<<<<< HEAD
   const endDate = new Date();
   endDate.setDate(endDate.getDate() + 30);
-=======
-  const endDate = new Date(startDate.getTime());
-  endDate.setDate(startDate.getDate() + 45);
->>>>>>> a0fcb4f50895a408bff934b01a7146417fe86944
+
   fs.writeFileSync('properties.txt', '');
   
   //launch and wait for page to load
