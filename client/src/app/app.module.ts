@@ -12,6 +12,7 @@ import { SearchComponent } from './navbar/search/search.component'
 // Change method of importing Material components using material module
 import { MaterialModule } from './material/material.module';
 import { PropertyBoxComponent } from './property-box/property-box.component';
+import { PropertyListComponent } from './property-list/property-list.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { PropertyBoxComponent } from './property-box/property-box.component';
     mapMaker,
     NavbarComponent,
     SearchComponent,
-    PropertyBoxComponent
+    PropertyBoxComponent,
+    PropertyListComponent
   ],
   imports: [
     BrowserModule,
