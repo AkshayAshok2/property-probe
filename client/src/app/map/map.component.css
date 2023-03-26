@@ -11,9 +11,8 @@ body {
 :host {
     display: flex;
     flex-direction: column;
-    height: 88vh;
+    height: 100%;
     align-items: center;
-    justify-content: center;
 }
 main {
     display: flex;
@@ -21,9 +20,9 @@ main {
 }
 .map-container {
     flex-grow: 1;
-    width: 50%;
+    width: 97vh;
 }
 .ol-attribution {
     left: 10px;
-  }
+}
   

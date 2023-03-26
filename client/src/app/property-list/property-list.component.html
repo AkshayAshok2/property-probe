@@ -1,6 +1,38 @@
-<div class="property-container">
-    <ng-container *ngFor="let property of properties">
-      <app-property-box [name]="property.name" [sqFootage]="property.sqFootage" [price]="property.price"></app-property-box>
-    </ng-container>
-  </div>
+<mat-accordion>
+  <mat-expansion-panel *ngFor="let property of properties">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{property.name}}
+      </mat-panel-title>
+      <mat-panel-description>
+        {{property.location}}
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <p>{{property.description}}</p>
+  </mat-expansion-panel>
+</mat-accordion>
 
+<mat-paginator [length]="properties.length" [pageSize]="pageSize"></mat-paginator>
+
+
+
+
+<!--
+<cdk-virtual-scroll-viewport class="container" [itemSize]="100" >
+  <div *cdkVirtualFor="let property of properties" class="property">
+    {{property.name}}
+    <p>{{property.sqFootage}}</p>
+    <p>{{property.price}}</p>
+  </div>
+</cdk-virtual-scroll-viewport>
+
+
+
+<mat-list class="property-container">
+  <mat-list-item>
+    <mat-icon matListIcon>favorite_border</mat-icon>
+    <h3 matLine>{{ properties[0].name }}</h3>
+  </mat-list-item>
+</mat-list>
+
+ -->
