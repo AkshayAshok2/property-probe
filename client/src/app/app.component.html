@@ -1,5 +1,16 @@
 <app-navbar></app-navbar>
-<map-root></map-root>
+<mat-grid-list cols="4" rowHeight="fit" style="height: 600px" gutterSize="2px">
+  <mat-grid-tile id="left-sidebar">
+    <property-container></property-container>
+  </mat-grid-tile>
+  <mat-grid-tile id="main-content" colspan="2">
+    <map-container></map-container>
+  </mat-grid-tile>
+  <mat-grid-tile id="right-sidebar">
+    Mama
+  </mat-grid-tile>
+</mat-grid-list>
+
 
 <!-- <div class="flex-ro-container">
   <div class="flex-row-item">1</div>
