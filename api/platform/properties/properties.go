@@ -1,6 +1,9 @@
 package properties
 
 import (
+	"context"
+
+	googlesearch "github.com/rocketlaunchr/google-search"
 	"gorm.io/gorm"
 )
 
@@ -44,4 +47,16 @@ func UpdateProperty(db *gorm.DB, property *Property) (err error) {
 func DeleteProperty(db *gorm.DB, property *Property, address string) (err error) {
 	db.Where("address = ?", address).Delete(property)
 	return nil
+}
+
+func GetDescription(address string) (description string) {
+	ctx := context.Background()
+	results, err := googlesearch.Search(ctx, address)
+	if err != nil {
+		return "No information on property found!"
+	}
+	if len(results) > 0 {
+		description = results[0].Description
+	}
+	return description
 }

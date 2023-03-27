@@ -139,3 +139,8 @@ func TestGetProperty(t *testing.T) {
 
 	DeleteProperty(db, &property, property.Address)
 }
+
+func TestGetDescription(t *testing.T) {
+	description := GetDescription("1013 Fieldstone Drive, 32940")
+	assert.Equal(t, description, "1013 Fieldstone Dr, Melbourne, FL 32940 is currently not for sale. The 2744 Square Feet single family home is a 3 beds, 2 baths property.")
+}
