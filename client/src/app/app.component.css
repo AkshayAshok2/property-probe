@@ -1,5 +1,5 @@
 #left-sidebar {
-  background-color: whitesmoke;
+  background-color: lightgray;
 }
 
 mat-grid-tile {
@@ -17,11 +17,7 @@ mat-grid-tile {
     text-align: center;
 }
 
-.container {
-    padding: 4rem;
-    width: 40rem;
-    margin: 0 auto;
-  }
+
   
   .list {
     padding: 1rem;

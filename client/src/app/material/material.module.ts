@@ -9,6 +9,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatPaginatorModule } from '@angular/material/paginator';
 import { materialize } from 'rxjs';
 
 const MaterialComponents = [
@@ -21,7 +22,9 @@ const MaterialComponents = [
   MatDividerModule,
   ScrollingModule,
   MatMenuModule,
-  MatProgressSpinnerModule
+  MatProgressSpinnerModule,
+  MatPaginatorModule,
+  
 ];
 
 @NgModule({

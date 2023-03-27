@@ -1,22 +1,14 @@
-.property-container {
-    width: 100%;
-    height: calc(100vh - 64px);
-}
-
-.property {
+.container {
+    font-family: "Roboto";
     display: flex;
     justify-content: center;
-    align-items: center;
-    border: 1px solid black;
-    box-sizing: border-box;
-    height: 100px;
-}
-
-.container {
-    height: 400px;
-}
-
-/* mat-list-item {
-    border: 1px solid black;
-    text-align: left;
-} */
+    padding: 30px;
+  }
+  
+  .scrolling-container {
+    display: block;
+    width: 320px;
+    height: 570px;
+    /* height: 97%; */
+    overflow-y: scroll;
+  }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { PropertyBoxComponent } from './property-box/property-box.component';
 
 @Component({
@@ -6,7 +6,7 @@ import { PropertyBoxComponent } from './property-box/property-box.component';
   templateUrl: './property-list.component.html',
   styleUrls: ['./property-list.component.css']
 })
-export class PropertyListComponent {
+export class PropertyListComponent implements OnInit {
   properties = [
     { name: 'Property 1', sqFootage: '1000 sq. ft.', price: '$1000/month' },
     { name: 'Property 2', sqFootage: '1200 sq. ft.', price: '$1200/month' },
@@ -15,6 +15,10 @@ export class PropertyListComponent {
     { name: 'Property 5', sqFootage: '1300 sq. ft.', price: '$750/month'}
   ];
 
+  items = Array.from({length: 100}).map((value, i) => `Item #${i}`);
+
+  ngOnInit() {}
+  
   // property = {};
 
   // reset() {

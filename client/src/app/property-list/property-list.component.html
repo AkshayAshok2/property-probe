@@ -1,4 +1,4 @@
-<mat-accordion>
+<!-- <mat-accordion>
   <mat-expansion-panel *ngFor="let property of properties">
     <mat-expansion-panel-header>
       <mat-panel-title>
@@ -12,27 +12,12 @@
   </mat-expansion-panel>
 </mat-accordion>
 
-<mat-paginator [length]="properties.length" [pageSize]="pageSize"></mat-paginator>
+<mat-paginator [length]="properties.length" [pageSize]="pageSize"></mat-paginator> -->
 
-
-
-
-<!--
-<cdk-virtual-scroll-viewport class="container" [itemSize]="100" >
-  <div *cdkVirtualFor="let property of properties" class="property">
-    {{property.name}}
-    <p>{{property.sqFootage}}</p>
-    <p>{{property.price}}</p>
+<div class="container">
+  <div class="virtual-scrolling">
+    <mat-list class="scrolling-container mat-elevation-z7">
+      <mat-list-item *ngFor="let property of items">{{property}}</mat-list-item>
+    </mat-list>
   </div>
-</cdk-virtual-scroll-viewport>
-
-
-
-<mat-list class="property-container">
-  <mat-list-item>
-    <mat-icon matListIcon>favorite_border</mat-icon>
-    <h3 matLine>{{ properties[0].name }}</h3>
-  </mat-list-item>
-</mat-list>
-
- -->
+</div>
