@@ -72,7 +72,7 @@ const processFile = async (filename) => {
         output += `${line}\n[No results found]\n`;
       } else {
         const { lat, lon } = latLon;
-        output += `${line}\n[${lat}, ${lon}]\n`;
+        output += `${line}\n[${lon}, ${lat}]\n`;
       }
     } else {
       output += line + '\n';
