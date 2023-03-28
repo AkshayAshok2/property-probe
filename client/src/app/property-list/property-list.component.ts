@@ -12,16 +12,28 @@ export class PropertyListComponent implements OnInit {
     { name: 'Property 2', sqFootage: '1200 sq. ft.', price: '$1200/month' },
     { name: 'Property 3', sqFootage: '800 sq. ft.', price: '$800/month' },
     { name: 'Property 4', sqFootage: '1100 sq. ft.', price: '$900/month'},
+    { name: 'Property 5', sqFootage: '1300 sq. ft.', price: '$750/month'},
+    { name: 'Property 1', sqFootage: '1000 sq. ft.', price: '$1000/month' },
+    { name: 'Property 2', sqFootage: '1200 sq. ft.', price: '$1200/month' },
+    { name: 'Property 3', sqFootage: '800 sq. ft.', price: '$800/month' },
+    { name: 'Property 4', sqFootage: '1100 sq. ft.', price: '$900/month'},
+    { name: 'Property 5', sqFootage: '1300 sq. ft.', price: '$750/month'},
+    { name: 'Property 1', sqFootage: '1000 sq. ft.', price: '$1000/month' },
+    { name: 'Property 2', sqFootage: '1200 sq. ft.', price: '$1200/month' },
+    { name: 'Property 3', sqFootage: '800 sq. ft.', price: '$800/month' },
+    { name: 'Property 4', sqFootage: '1100 sq. ft.', price: '$900/month'},
+    { name: 'Property 5', sqFootage: '1300 sq. ft.', price: '$750/month'},
+    { name: 'Property 1', sqFootage: '1000 sq. ft.', price: '$1000/month' },
+    { name: 'Property 2', sqFootage: '1200 sq. ft.', price: '$1200/month' },
+    { name: 'Property 3', sqFootage: '800 sq. ft.', price: '$800/month' },
+    { name: 'Property 4', sqFootage: '1100 sq. ft.', price: '$900/month'},
+    { name: 'Property 5', sqFootage: '1300 sq. ft.', price: '$750/month'},
+    { name: 'Property 1', sqFootage: '1000 sq. ft.', price: '$1000/month' },
+    { name: 'Property 2', sqFootage: '1200 sq. ft.', price: '$1200/month' },
+    { name: 'Property 3', sqFootage: '800 sq. ft.', price: '$800/month' },
+    { name: 'Property 4', sqFootage: '1100 sq. ft.', price: '$900/month'},
     { name: 'Property 5', sqFootage: '1300 sq. ft.', price: '$750/month'}
   ];
 
-  items = Array.from({length: 100}).map((value, i) => `Item #${i}`);
-
   ngOnInit() {}
-  
-  // property = {};
-
-  // reset() {
-  //   this.property = {};
-  // }
 }
