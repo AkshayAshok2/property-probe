@@ -1,6 +1,23 @@
-<div class="property-container">
-    <ng-container *ngFor="let property of properties">
-      <app-property-box [name]="property.name" [sqFootage]="property.sqFootage" [price]="property.price"></app-property-box>
-    </ng-container>
-  </div>
+<!-- <mat-accordion>
+  <mat-expansion-panel *ngFor="let property of properties">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{property.name}}
+      </mat-panel-title>
+      <mat-panel-description>
+        {{property.location}}
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <p>{{property.description}}</p>
+  </mat-expansion-panel>
+</mat-accordion>
 
+<mat-paginator [length]="properties.length" [pageSize]="pageSize"></mat-paginator> -->
+
+<div class="container">
+  <div class="virtual-scrolling">
+    <mat-list class="scrolling-container mat-elevation-z7">
+      <mat-list-item *ngFor="let property of items">{{property}}</mat-list-item>
+    </mat-list>
+  </div>
+</div>

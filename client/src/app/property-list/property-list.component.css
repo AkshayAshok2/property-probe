@@ -1,0 +1,14 @@
+.container {
+    font-family: "Roboto";
+    display: flex;
+    justify-content: center;
+    padding: 30px;
+  }
+  
+  .scrolling-container {
+    display: block;
+    width: 320px;
+    height: 570px;
+    /* height: 97%; */
+    overflow-y: scroll;
+  }

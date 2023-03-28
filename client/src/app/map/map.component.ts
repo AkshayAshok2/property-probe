@@ -6,7 +6,7 @@ import OSM from 'ol/source/OSM';
 import { fromLonLat } from 'ol/proj.js';
 
 @Component({
-  selector: 'map-root',
+  selector: 'map-container',
   templateUrl: './map.component.html',
   styleUrls: ['./map.component.css'],
 })

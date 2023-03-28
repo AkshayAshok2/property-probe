@@ -7,11 +7,11 @@ import { HttpClientModule} from '@angular/common/http'
 // import the MapsModule for the Maps component
 import { MapMaker } from './map/map.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { SearchComponent } from './navbar/search/search.component'
+import { SearchComponent } from './navbar/search/search.component';
+import { PropertyListComponent } from './property-list/property-list.component';
+import { PropertyBoxComponent } from './property-list/property-box/property-box.component';
 // Change method of importing Material components using material module
 import { MaterialModule } from './material/material.module';
-import { PropertyBoxComponent } from './property-box/property-box.component';
-import { PropertyListComponent } from './property-list/property-list.component';
 
 @NgModule({
   declarations: [
