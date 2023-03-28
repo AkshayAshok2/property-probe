@@ -1,3 +1,12 @@
+#left-sidebar {
+  background-color: lightgray;
+}
+
+mat-grid-tile {
+  background-color: lightskyblue;
+}
+
+
 #homePageTitleText {
     color: white;
     font-family: sans-serif;
@@ -8,28 +17,7 @@
     text-align: center;
 }
 
-form {
-    width: 500px;
-    margin: 50px auto;
-}
 
-.homeSearchBar {
-    padding: 4px 5px;
-    background: white (50, 50, 50, 0.2);
-    border: 0px solid #dbdbdb;
-    height: 25px;
-    width: 200px;
-}
-
-.container {
-    padding: 4rem;
-    width: 40rem;
-    margin: 0 auto;
-  }
-  
-  h1 {
-    font-size: 3rem;
-  }
   
   .list {
     padding: 1rem;
@@ -81,4 +69,28 @@ form {
   
   .error-msg {
     color: red;
+  }
+
+.flex-row-container {
+  
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+  }
+  .flex-row-container > .flex-row-item {
+    flex: 1 1 30%; /*grow | shrink | basis */
+    height: 500px;
+  }
+  
+  .flex-row-item {
+  background-color: #fff4e6;
+  border: 1px solid #000000;
+  text-align: center;
+  }    
+  @media  screen and (max-width:481px) {
+    .flex-row-container > .flex-row-item {
+      flex: 100%
+    }
   }

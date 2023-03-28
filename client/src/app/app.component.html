@@ -1,39 +1,12 @@
-<!--New HTML-->
-<div class="app-root">
-  <div class="input-container">
-    <img class="img-responsive" src="../assets/images/PropertyProbe-logo2.png">
-    <input
-      [(ngModel)]="search_term" 
-      type="text"
-      placeholder="Search properties">
-    <button (click)="search()">Search</button>
-    
-  </div>
-  
-
-  <!--Wakim's HTML-->
-  <!-- <div>
-    <div> 
-      <div>Owner</div>
-      <input 
-        [(ngModel)]="owner"
-        type="text" 
-        placeholder="Enter the owner">
-    </div>
-    <div>
-      <div>Address</div>
-      <input 
-      [(ngModel)]="address"
-        type ="text" 
-        placeholder="Enter the address">
-    </div>
-    <button (click)="addProperty()"> Add Property Listing </button>
-  </div> -->
-
-  <div *ngFor="let propertyListing of propertyListing">
-    <div>SearchTerm: {{ propertyListing.search_term }}</div>
-    <!-- <div>Owner: {{ propertyListing.owner }} </div> 
-    <div>Address: {{ propertyListing.address }} </div> -->
-  </div>
-  <map-root></map-root>
-</div>
+<app-navbar></app-navbar>
+<mat-grid-list cols="4" rowHeight="fit" style="height: 90%" gutterSize="3px">
+  <mat-grid-tile id="left-sidebar">
+    <property-container></property-container>
+  </mat-grid-tile>
+  <mat-grid-tile id="main-content" colspan="2">
+    <map-container></map-container>
+  </mat-grid-tile>
+  <mat-grid-tile id="right-sidebar">
+    Mama
+  </mat-grid-tile>
+</mat-grid-list>
