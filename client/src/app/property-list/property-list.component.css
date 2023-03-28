@@ -1,6 +1,5 @@
 .container {
     font-family: "Roboto";
-<<<<<<< HEAD
     width: 100vw;
     display: flex;
     justify-content: space-around;
@@ -44,17 +43,3 @@
   font-size: 18px;
   text-align: center;
 }
-=======
-    display: flex;
-    justify-content: center;
-    padding: 30px;
-  }
-  
-  .scrolling-container {
-    display: block;
-    width: 320px;
-    height: 570px;
-    /* height: 97%; */
-    overflow-y: scroll;
-  }
->>>>>>> main
