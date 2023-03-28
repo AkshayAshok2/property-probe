@@ -1,0 +1,28 @@
+<!-- <mat-accordion>
+  <mat-expansion-panel *ngFor="let property of properties">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{property.name}}
+      </mat-panel-title>
+      <mat-panel-description>
+        {{property.location}}
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <p>{{property.description}}</p>
+  </mat-expansion-panel>
+</mat-accordion>
+
+<mat-paginator [length]="properties.length" [pageSize]="pageSize"></mat-paginator> -->
+
+<div class="container">
+  <div class="virtual-scrolling">
+    <mat-list class="scrolling-container mat-elevation-z7">
+      <mat-list-item *ngFor="let property of properties">
+        <div class="property-box">
+          <div class="property-name">{{property.name}}</div>
+          <div class="property-price">{{property.price}} - {{property.sqFootage}}</div>
+        </div>
+      </mat-list-item>
+    </mat-list>
+  </div>
+</div>
