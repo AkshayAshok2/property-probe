@@ -1,12 +1,12 @@
 <app-navbar></app-navbar>
 <mat-grid-list cols="4" rowHeight="fit" style="height: 90%" gutterSize="3px">
   <mat-grid-tile id="left-sidebar">
-    <property-container></property-container>
+    <property-container (propertySelected)="selectedProperty = $event"></property-container>
   </mat-grid-tile>
   <mat-grid-tile id="main-content" colspan="2">
     <map-container></map-container>
   </mat-grid-tile>
   <mat-grid-tile id="right-sidebar">
-    Mama
+    <app-right-sidebar [property]="selectedProperty"></app-right-sidebar>
   </mat-grid-tile>
 </mat-grid-list>

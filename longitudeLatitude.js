@@ -1,34 +1,3 @@
-
-// const getAddressLatLng = (address) => {
-//   const options = {
-//     headers: {
-//       'User-Agent': 'Property Probe'
-//     }
-//   };
-  
-//   return new Promise((resolve, reject) => {
-//     https.get(`https://nominatim.openstreetmap.org/search?q=${encodeURI(address)}&format=json`, options, (res) => {
-//       let data = '';
-//       res.on('data', (chunk) => {
-//         data += chunk;
-//       });
-//       res.on('end', () => {
-//         const results = JSON.parse(data);
-//         if (results.length > 0) {
-//           const lat = results[0].lat;
-//           const lon = results[0].lon;
-//           resolve({ lat, lon });
-//         } else {
-//           resolve(null);
-//         }
-//       });
-//     }).on('error', (err) => {
-//       reject(err);
-//     });
-//   });
-// };
-
-
 const fs = require('fs');
 const { promisify } = require('util');
 const readFile = promisify(fs.readFile);
