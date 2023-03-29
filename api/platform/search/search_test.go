@@ -2,7 +2,7 @@ package search
 
 import "testing"
 
-func TestAdd(t *testing.T) {
+func TestSearchAdd(t *testing.T) {
 	history := New()
 	history.Add(Search{})
 	if len(history.Searches) != 1 {
@@ -10,7 +10,7 @@ func TestAdd(t *testing.T) {
 	}
 }
 
-func TestGetAll(t *testing.T) {
+func TestSearchGetAll(t *testing.T) {
 	history := New()
 	history.Add(Search{})
 	results := history.GetAll()
