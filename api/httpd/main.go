@@ -3,6 +3,7 @@ package main
 import (
 	"PropertyProbe/database"
 	"PropertyProbe/httpd/handler"
+	"PropertyProbe/platform/properties"
 	"PropertyProbe/platform/search"
 
 	"github.com/gin-gonic/gin"
@@ -25,6 +26,8 @@ func main() {
 		panic(err)
 	}
 
+	properties.AddPropertiesToDatbase()
+
 	r := gin.Default()
 
 	api := r.Group("/api")
@@ -35,9 +38,9 @@ func main() {
 		api.POST("/properties", propertyRepo.CreateProperty)
 		api.GET("/properties", propertyRepo.GetAllProperties)
 		api.GET("/properties/:zipcode", propertyRepo.GetZipCodeProperties)
-		api.GET("/properties/:address", propertyRepo.GetProperty)
-		api.PUT("/properties/:address", propertyRepo.UpdateProperty)
-		api.DELETE("/properties/:address", propertyRepo.DeleteProperty)
+		api.GET("/properties/address/:address", propertyRepo.GetProperty)
+		api.PUT("/properties/address/:address", propertyRepo.UpdateProperty)
+		api.DELETE("/properties/address/:address", propertyRepo.DeleteProperty)
 	}
 
 	r.Run("0.0.0.0:5000")

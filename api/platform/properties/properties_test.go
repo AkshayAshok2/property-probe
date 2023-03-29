@@ -155,7 +155,7 @@ func TestGetDescription(t *testing.T) {
 	assert.Equal(t, description, "The 2744 Square Feet single family home is a 3 beds, 2 baths property.")
 }
 
-func TestGetZipCode(t *testing.T) {
+func TestGetZipCodeProperties(t *testing.T) {
 	dsn := "go:Gators123@tcp(cen3031-project.mysql.database.azure.com:3306)/listings?charset=utf8mb4&parseTime=True&loc=Local"
 	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
 	assert.NoError(t, err)
@@ -192,4 +192,19 @@ func TestGetZipCode(t *testing.T) {
 	assert.Len(t, props, 2)
 
 	DeleteProperty(db, &prop, prop.Address)
+}
+
+func TestGetZipCode(t *testing.T) {
+	prop := Property{
+		AuctionType:     "private",
+		JudgementAmount: 12345.67,
+		Address:         "20308 NW COUNTY RD 2054 ALACHUA, FL 32615",
+		AssessedValue:   9876.54,
+		ZipCode:         "",
+		Description:     "2400 sqft, 2 bed 3 bath",
+	}
+
+	zip := GetZipCode(prop.Address)
+	assert.Equal(t, zip, "32615")
+
 }

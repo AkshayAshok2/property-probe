@@ -3,6 +3,7 @@ package properties
 import (
 	"context"
 	"fmt"
+	"regexp"
 	"strings"
 
 	googlesearch "github.com/rocketlaunchr/google-search"
@@ -64,6 +65,9 @@ func DeleteProperty(db *gorm.DB, property *Property, address string) (err error)
 
 func GetDescription(address string) (description string) {
 	ctx := context.Background()
+	if len(address) == 0 {
+		return ""
+	}
 	results, err := googlesearch.Search(ctx, address)
 	if err != nil {
 		return "No information on property found!"
@@ -79,4 +83,14 @@ func GetDescription(address string) (description string) {
 		}
 	}
 	return description
+}
+
+func GetZipCode(address string) string {
+	re := regexp.MustCompile(`\d{5}(?:[-\s]\d{4})?$`) // Regular expression to match zip code
+	matches := re.FindStringSubmatch(address)
+	if len(matches) > 0 {
+		return matches[0]
+	} else {
+		return ""
+	}
 }
