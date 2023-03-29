@@ -6,6 +6,7 @@ import (
 
 type Property struct {
 	// gorm.Model
+	Date            string  `json:"Date"`
 	AuctionType     string  `json:"auction_type"`
 	JudgementAmount float64 `json:"judgement_amount"`
 	Address         string  `json:"address"`
