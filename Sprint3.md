@@ -24,7 +24,6 @@
 
 &nbsp;&nbsp;&nbsp;&nbsp;**properties_test.go:**
 
-
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TestCreateProperty
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TestGetProperties
@@ -41,6 +40,19 @@
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TestGetZipCode
 
+&nbsp;&nbsp;&nbsp;&nbsp;**properties_controller_test.go:**
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TestCreateProperty
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TestGetProperties
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TestGetZipCodeProperties
+
+&nbsp;&nbsp;&nbsp;&nbsp;**search_controller_test.go:**
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TestSearchGet
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TestSearchPost
 
 ### Backend API Documentation: 
   
@@ -125,5 +137,19 @@ To delete a property, call the DeleteProperty function and pass in a pointer to 
 property := &properties.Property{}
 if err := properties.DeleteProperty(db, property, "123 Main St"); err != nil {
     panic(err)
+}
+```
+
+**Function 6: Retrieve Properties Based on Zip Code**
+
+To retrieve properties based on zip codes, call the GetZipCodeProperties function with the specific zip code and pass in a pointer to a slice of Property structs. The function populates the slice with all properties in the database. The function returns an error if the retrieval process failed. Here is an example:
+```
+var properties []properties.Property
+if err := properties.GetZipCodeProperties(db, &properties); err != nil {
+    panic(err)
+}
+
+for _, property := range properties {
+    fmt.Printf("%+v\n", property)
 }
 ```
