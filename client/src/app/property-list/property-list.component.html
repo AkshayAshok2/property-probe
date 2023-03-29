@@ -17,7 +17,13 @@
 <div class="container">
   <div class="virtual-scrolling">
     <mat-list class="scrolling-container mat-elevation-z7">
-      <mat-list-item *ngFor="let property of items">{{property}}</mat-list-item>
+      <mat-list-item *ngFor="let property of items">
+        <b>Property name/address</b>
+        <br>
+        {{property}}
+        &nbsp;
+        Additional info
+      </mat-list-item>
     </mat-list>
   </div>
 </div>
