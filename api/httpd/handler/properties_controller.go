@@ -41,6 +41,17 @@ func (repository *PropertyRepo) GetAllProperties(c *gin.Context) {
 	c.JSON(http.StatusOK, property)
 }
 
+func (repository *PropertyRepo) GetZipCodeProperties(c *gin.Context) {
+	var property []properties.Property
+	zipcode := (c.Param("zipcode"))
+	err := properties.GetZipCodeProperties(repository.Db, &property, zipcode)
+	if err != nil {
+		c.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{"error": err})
+		return
+	}
+	c.JSON(http.StatusOK, property)
+}
+
 func (repository *PropertyRepo) GetProperty(c *gin.Context) {
 	address := (c.Param("address"))
 	var property properties.Property

@@ -23,7 +23,7 @@ func TestCreateProperty(t *testing.T) {
 		JudgementAmount: 12345.67,
 		Address:         "123 Main Street",
 		AssessedValue:   9876.54,
-		ZipCode:         32940,
+		ZipCode:         "32940",
 		Description:     "2400 sqft, 2 bed 3 bath",
 	}
 	err = CreateProperty(db, &prop)
@@ -48,7 +48,7 @@ func TestGetAllProperties(t *testing.T) {
 		JudgementAmount: 12345.67,
 		Address:         "123 Main Street",
 		AssessedValue:   9876.54,
-		ZipCode:         32940,
+		ZipCode:         "32940",
 		Description:     "2400 sqft, 2 bed 3 bath",
 	}
 	CreateProperty(db, &prop)
@@ -77,7 +77,7 @@ func TestUpdateProperty(t *testing.T) {
 		JudgementAmount: 12345.67,
 		Address:         "123 Main Street",
 		AssessedValue:   9876.54,
-		ZipCode:         32940,
+		ZipCode:         "32940",
 		Description:     "2400 sqft, 2 bed 3 bath",
 	}
 	CreateProperty(db, &prop)
@@ -103,7 +103,7 @@ func TestDeleteProperty(t *testing.T) {
 		JudgementAmount: 12345.67,
 		Address:         "123 Main Street",
 		AssessedValue:   9876.54,
-		ZipCode:         32940,
+		ZipCode:         "32940",
 		Description:     "2400 sqft, 2 bed 3 bath",
 	}
 
@@ -136,7 +136,7 @@ func TestGetProperty(t *testing.T) {
 		JudgementAmount: 12345.67,
 		Address:         "123 Main Street",
 		AssessedValue:   9876.54,
-		ZipCode:         32940,
+		ZipCode:         "32940",
 		Description:     "2400 sqft, 2 bed 3 bath",
 	}
 
@@ -153,4 +153,43 @@ func TestGetProperty(t *testing.T) {
 func TestGetDescription(t *testing.T) {
 	description := GetDescription("1013 Fieldstone Drive, 32940")
 	assert.Equal(t, description, "The 2744 Square Feet single family home is a 3 beds, 2 baths property.")
+}
+
+func TestGetZipCode(t *testing.T) {
+	dsn := "go:Gators123@tcp(cen3031-project.mysql.database.azure.com:3306)/listings?charset=utf8mb4&parseTime=True&loc=Local"
+	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
+	assert.NoError(t, err)
+	assert.NotNil(t, db)
+
+	// Migrate the database schema
+	err = db.AutoMigrate(Property{})
+	assert.NoError(t, err)
+
+	prop := Property{
+		AuctionType:     "private",
+		JudgementAmount: 12345.67,
+		Address:         "123 Main Street",
+		AssessedValue:   9876.54,
+		ZipCode:         "32940",
+		Description:     "2400 sqft, 2 bed 3 bath",
+	}
+	CreateProperty(db, &prop)
+
+	prop = Property{
+		AuctionType:     "public",
+		JudgementAmount: 12345.67,
+		Address:         "123 Main Street",
+		AssessedValue:   9876.54,
+		ZipCode:         "32940",
+		Description:     "2400 sqft, 2 bed 3 bath",
+	}
+	CreateProperty(db, &prop)
+
+	// Get zipcode properties
+	var props []Property
+	err = GetZipCodeProperties(db, &props, "32940")
+	assert.NoError(t, err)
+	assert.Len(t, props, 2)
+
+	DeleteProperty(db, &prop, prop.Address)
 }

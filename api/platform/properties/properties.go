@@ -16,7 +16,7 @@ type Property struct {
 	Address         string  `json:"address"`
 	AssessedValue   float64 `json:"assessedvalue"`
 	Description     string  `json:"description"`
-	ZipCode         float64 `json:"zipcode"`
+	ZipCode         string  `json:"zip_code"`
 }
 
 func CreateProperty(db *gorm.DB, property *Property) (err error) {
@@ -37,6 +37,14 @@ func GetAllProperties(db *gorm.DB, property *[]Property) (err error) {
 
 func GetProperty(db *gorm.DB, property *Property, address string) (err error) {
 	err = db.Where("address = ?", address).First(property).Error
+	if err != nil {
+		return err
+	}
+	return nil
+}
+
+func GetZipCodeProperties(db *gorm.DB, property *[]Property, zipcode string) (err error) {
+	err = db.Where("zip_code = ?", zipcode).Find(property).Error
 	if err != nil {
 		return err
 	}

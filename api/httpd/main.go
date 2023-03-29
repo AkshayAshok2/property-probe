@@ -32,11 +32,12 @@ func main() {
 		// api.GET("/ping", handler.PingGet())
 		api.GET("/search", handler.SearchGet(searchHistory))
 		api.POST("/search", handler.SearchPost(searchHistory))
-		api.POST("/users", propertyRepo.CreateProperty)
-		api.GET("/users", propertyRepo.GetAllProperties)
-		api.GET("/users/:address", propertyRepo.GetProperty)
-		api.PUT("/users/:address", propertyRepo.UpdateProperty)
-		api.DELETE("/users/:address", propertyRepo.DeleteProperty)
+		api.POST("/properties", propertyRepo.CreateProperty)
+		api.GET("/properties", propertyRepo.GetAllProperties)
+		api.GET("/properties:zipcode", propertyRepo.GetZipCodeProperties)
+		api.GET("/properties/:address", propertyRepo.GetProperty)
+		api.PUT("/properties/:address", propertyRepo.UpdateProperty)
+		api.DELETE("/properties/:address", propertyRepo.DeleteProperty)
 	}
 
 	r.Run("0.0.0.0:5000")
