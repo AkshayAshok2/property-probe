@@ -12,6 +12,7 @@ import { PropertyListComponent } from './property-list/property-list.component';
 import { PropertyBoxComponent } from './property-list/property-box/property-box.component';
 // Change method of importing Material components using material module
 import { MaterialModule } from './material/material.module';
+import { RightSidebarComponent } from './right-sidebar/right-sidebar.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { MaterialModule } from './material/material.module';
     NavbarComponent,
     SearchComponent,
     PropertyBoxComponent,
-    PropertyListComponent
+    PropertyListComponent,
+    RightSidebarComponent,
   ],
   imports: [
     BrowserModule,
