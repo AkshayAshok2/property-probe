@@ -31,9 +31,9 @@ func (repository *PropertyRepo) CreateProperty(c *gin.Context) {
 	c.JSON(http.StatusOK, property)
 }
 
-func (repository *PropertyRepo) GetProperties(c *gin.Context) {
+func (repository *PropertyRepo) GetAllProperties(c *gin.Context) {
 	var property []properties.Property
-	err := properties.GetProperties(repository.Db, &property)
+	err := properties.GetAllProperties(repository.Db, &property)
 	if err != nil {
 		c.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{"error": err})
 		return
