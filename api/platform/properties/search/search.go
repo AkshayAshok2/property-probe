@@ -24,6 +24,7 @@ func New() *Repo {
 
 func (r *Repo) Add(search Search) {
 	r.Searches = append(r.Searches, search)
+
 }
 
 func (r *Repo) GetAll() []Search {
