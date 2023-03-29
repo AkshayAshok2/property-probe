@@ -34,7 +34,7 @@ func main() {
 		api.POST("/search", handler.SearchPost(searchHistory))
 		api.POST("/properties", propertyRepo.CreateProperty)
 		api.GET("/properties", propertyRepo.GetAllProperties)
-		api.GET("/properties:zipcode", propertyRepo.GetZipCodeProperties)
+		api.GET("/properties/:zipcode", propertyRepo.GetZipCodeProperties)
 		api.GET("/properties/:address", propertyRepo.GetProperty)
 		api.PUT("/properties/:address", propertyRepo.UpdateProperty)
 		api.DELETE("/properties/:address", propertyRepo.DeleteProperty)
