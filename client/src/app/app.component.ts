@@ -9,8 +9,11 @@ import { interval, take, lastValueFrom } from 'rxjs';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  items = Array.from({length: 100}).map((value, i) => `Item #${i}`);
+  selectedProperty: any;
 
+  onPropertySelected(property: any) {
+    this.selectedProperty = property;
+  }
   ngOnInit() {}
 }
 
