@@ -4,12 +4,13 @@
 
 **Property API:** In addition to all the methods that will be crucial to utilizing our MYSQL database in the future including add, remove, search, and update, the backend team also added a GetZipCodeProperties Get call that will produce an array of properties with that specific zip code. This will allow the frontend to easily retrieve certain properties based on what zip code is searched. The next step in this will be connecting the properties on the backend to the frontend.
 
-**Frontend Progress:** 
+**Frontend Progress:** Using Angular Material, we have established the overall layout of the project's user interface. Furthermore, we have implemented a list-style container that shows properties and their basic information. For each property in this container, more information is revealed at the right-hand side of the screen when the property component is clicked. Additionally, the frontend team has further developed the application's map component to show property markers at given latitude and longitude components. In the next sprint, the property-list and map components will be integrated with the search component and use scraped data from the backend to yield a fully functional property-hunting service.
 
 
 ### Frontend Unit Tests:
 
 * Testing input/output of search bar and functionality of search button.
+* Testing input/output of individual property data and functionality of property list/container.
 
 ### Frontend Cypress Test:
 
