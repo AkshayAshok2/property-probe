@@ -37,3 +37,12 @@ func connectDB() *gorm.DB {
 func getDB() *gorm.DB {
 	return Db
 }
+
+func ClearDB() error {
+	db := getDB()
+	err := db.Exec("DELETE FROM properties").Error
+	if err != nil {
+		return err
+	}
+	return nil
+}
