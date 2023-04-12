@@ -4,6 +4,7 @@ import (
 	"context"
 	"fmt"
 	"regexp"
+	"strconv"
 	"strings"
 
 	googlesearch "github.com/rocketlaunchr/google-search"
@@ -68,19 +69,38 @@ func GetDescription(address string) (description string) {
 	if len(address) == 0 {
 		return ""
 	}
-	results, err := googlesearch.Search(ctx, address)
+
+	results, err := googlesearch.Search(ctx, address+" zillow")
 	if err != nil {
 		return "No information on property found!"
 	}
+
 	if len(results) > 0 {
-		description = results[0].Description
-		splitResult := strings.Split(description, ". ")
-		if len(splitResult) > 1 {
-			description = strings.TrimSpace(splitResult[1])
-			fmt.Println(description)
-		} else {
-			fmt.Println("Desired substring not found in the input string.")
+		for _, value := range results {
+			fmt.Printf(value.URL + "\n")
+			if strings.HasPrefix(value.URL, "https://www.zillow.com") {
+				description = value.Description
+				break
+			}
 		}
+		// Define regular expressions to match the required information
+		reBeds := regexp.MustCompile(`(\d+)\s+beds`)
+		reBaths := regexp.MustCompile(`(\d+)\s+baths`)
+		reSqFt := regexp.MustCompile(`(\d+)\s+Square Feet`)
+
+		// Extract the number of beds, baths, and square footage from the string
+		bedsStr := reBeds.FindStringSubmatch(description)[1]
+		bathsStr := reBaths.FindStringSubmatch(description)[1]
+		sqFtStr := reSqFt.FindStringSubmatch(description)[1]
+
+		// Convert the extracted strings to integers
+		beds, _ := strconv.Atoi(bedsStr)
+		baths, _ := strconv.Atoi(bathsStr)
+		sqFt, _ := strconv.Atoi(sqFtStr)
+
+		// Format the resulting string
+		description = fmt.Sprintf("This property %d Square Feet home has %d baths and %d beds.", sqFt, baths, beds)
+
 	}
 	return description
 }
