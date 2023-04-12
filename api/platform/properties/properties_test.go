@@ -14,6 +14,9 @@ func TestCreateProperty(t *testing.T) {
 	assert.NoError(t, err)
 	assert.NotNil(t, db)
 
+	err = db.Exec("DELETE FROM properties").Error
+	assert.NoError(t, err)
+
 	// Migrate the database schema
 	err = db.AutoMigrate(Property{})
 	assert.NoError(t, err)
@@ -39,6 +42,9 @@ func TestGetAllProperties(t *testing.T) {
 	assert.NoError(t, err)
 	assert.NotNil(t, db)
 
+	err = db.Exec("DELETE FROM properties").Error
+	assert.NoError(t, err)
+
 	// Migrate the database schema
 	err = db.AutoMigrate(Property{})
 	assert.NoError(t, err)
@@ -46,7 +52,7 @@ func TestGetAllProperties(t *testing.T) {
 	prop := Property{
 		AuctionType:     "private",
 		JudgementAmount: 12345.67,
-		Address:         "123 Main Street",
+		Address:         "123 Main Street 12345",
 		AssessedValue:   9876.54,
 		ZipCode:         "32940",
 		Description:     "2400 sqft, 2 bed 3 bath",
@@ -67,6 +73,9 @@ func TestUpdateProperty(t *testing.T) {
 	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
 	assert.NoError(t, err)
 	assert.NotNil(t, db)
+
+	err = db.Exec("DELETE FROM properties").Error
+	assert.NoError(t, err)
 
 	// Migrate the database schema
 	err = db.AutoMigrate(Property{})
@@ -93,6 +102,9 @@ func TestDeleteProperty(t *testing.T) {
 	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
 	assert.NoError(t, err)
 	assert.NotNil(t, db)
+
+	err = db.Exec("DELETE FROM properties").Error
+	assert.NoError(t, err)
 
 	// Migrate the database schema
 	err = db.AutoMigrate(Property{})
@@ -126,6 +138,9 @@ func TestGetProperty(t *testing.T) {
 	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
 	assert.NoError(t, err)
 	assert.NotNil(t, db)
+
+	err = db.Exec("DELETE FROM properties").Error
+	assert.NoError(t, err)
 
 	// Migrate the database schema
 	err = db.AutoMigrate(Property{})

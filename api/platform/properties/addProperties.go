@@ -4,21 +4,13 @@ import (
 	"bufio"
 	"fmt"
 	"os"
+	"path/filepath"
 	"strconv"
 	"strings"
 
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 )
-
-/*type Property struct {
-	Date            string  `json:"date"`
-	AuctionType     string  `json:"auction_type"`
-	JudgementAmount float64 `json:"judgement_amount"`
-	Address         string  `json:"address"`
-	AssessedValue   float64 `json:"assessedvalue"`
-	LatLon          string  `json:"latlon"`
-}*/
 
 func CreatePropertyWithNoConnectionParam(property *Property) (err error) {
 	dsn := "go:Gators123@tcp(cen3031-project.mysql.database.azure.com:3306)/listings?charset=utf8mb4&parseTime=True&loc=Local"
@@ -34,7 +26,20 @@ func parseAmount(amount string) (float64, error) {
 }
 
 func AddPropertiesToDatbase() {
-	file, err := os.Open("properties.txt")
+	// get the current working directory
+	cwd, err := os.Getwd()
+	if err != nil {
+		fmt.Println("Error getting current working directory:", err)
+		return
+	}
+
+	// specify the relative path to your file
+	relPath := "/platform/properties/properties.txt"
+
+	// join the current working directory with the file path
+	absPath := filepath.Join(cwd, relPath)
+
+	file, err := os.Open(absPath)
 	if err != nil {
 		fmt.Println("Error opening file:", err)
 		return
