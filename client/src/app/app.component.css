@@ -1,12 +1,6 @@
 mat-grid-tile {
   background-color: lightsteelblue;
 }
-.mat-grid-tile-content {
-  position: absolute;
-  display: flex;
-  justify-content: center;
-  height: 100%;
-}
 
 #homePageTitleText {
     color: white;
