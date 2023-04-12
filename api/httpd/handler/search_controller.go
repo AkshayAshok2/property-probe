@@ -7,6 +7,13 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+func SearchGet(searches search.Getter) gin.HandlerFunc {
+	return func(c *gin.Context) {
+		results := searches.GetAll()
+		c.JSON(http.StatusOK, results)
+	}
+}
+
 type SearchPostRequest struct {
 	SearchTerm string `json:"search_term"`
 }
