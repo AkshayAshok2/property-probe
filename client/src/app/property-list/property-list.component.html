@@ -2,10 +2,10 @@
 <div class="container">
   <div class="virtual-scrolling">
     <mat-list class="scrolling-container mat-elevation-z7">
-      <mat-list-item *ngFor="let property of properties" (click)="onSelect(property)">
+      <mat-list-item *ngFor="let property of allProperties" (click)="onSelect(property)">
         <div class="property-box">
-          <div class="property-name">{{property.name}}</div>
-          <div class="property-price">{{property.price}} - {{property.sqFootage}}</div>
+          <div class="property-name">{{property.address}}</div>
+          <div class="property-price">${{property.assessedvalue}} - {{property.date}}</div>
         </div>
       </mat-list-item>
     </mat-list>

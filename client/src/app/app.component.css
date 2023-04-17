@@ -2,7 +2,6 @@ mat-grid-tile {
   background-color: lightsteelblue;
 }
 
-
 #homePageTitleText {
     color: white;
     font-family: sans-serif;
@@ -10,11 +9,7 @@ mat-grid-tile {
     font-size: 34pt;
     font-weight: lighter;
     outline-style: solid white 2px;
-    text-align: center;
-}
-
-
-  
+}  
   .list {
     padding: 1rem;
     width: 100%;
@@ -71,8 +66,6 @@ mat-grid-tile {
   
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
     padding: 5px;
   }
   .flex-row-container > .flex-row-item {
@@ -83,7 +76,6 @@ mat-grid-tile {
   .flex-row-item {
   background-color: #fff4e6;
   border: 1px solid #000000;
-  text-align: center;
   }    
   @media  screen and (max-width:481px) {
     .flex-row-container > .flex-row-item {

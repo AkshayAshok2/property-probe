@@ -1,5 +1,18 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { PropertyBoxComponent } from './property-box/property-box.component';
+import { HttpClient } from '@angular/common/http';
+import { interval, take, lastValueFrom } from 'rxjs';
+
+interface PropertyTerm {
+  date            :string
+	AuctionType     :string
+	JudgementAmount :Float64Array
+	address         :string
+	assessedvalue   :Float64Array
+	LatLon          :string
+	Description     :string
+	zip_code        :string
+}
 
 @Component({
   selector: 'property-container',
@@ -7,29 +20,15 @@ import { PropertyBoxComponent } from './property-box/property-box.component';
   styleUrls: ['./property-list.component.css']
 })
 export class PropertyListComponent implements OnInit {
-  properties = [
-    { name: 'Property 1', sqFootage: '1000 sq. ft.', price: '$1000/month' },
-    { name: 'Property 2', sqFootage: '1200 sq. ft.', price: '$1200/month' },
-    { name: 'Property 3', sqFootage: '800 sq. ft.', price: '$800/month' },
-    { name: 'Property 4', sqFootage: '1100 sq. ft.', price: '$900/month'},
-    { name: 'Property 5', sqFootage: '1300 sq. ft.', price: '$750/month'},
-    { name: 'Property 6', sqFootage: '1000 sq. ft.', price: '$1000/month'}, 
-    { name: 'Property 7', sqFootage: '1200 sq. ft.', price: '$1200/month' },  
-    { name: 'Property 8', sqFootage: '800 sq. ft.', price: '$800/month' },  
-    { name: 'Property 9', sqFootage: '1100 sq. ft.', price: '$900/month'},  
-    { name: 'Property 10', sqFootage: '1300 sq. ft.', price: '$750/month'},  
-    { name: 'Property 11', sqFootage: '1000 sq. ft.', price: '$1000/month' },  
-    { name: 'Property 12', sqFootage: '1200 sq. ft.', price: '$1200/month' },  
-    { name: 'Property 13', sqFootage: '800 sq. ft.', price: '$800/month' },  
-    { name: 'Property 14', sqFootage: '1100 sq. ft.', price: '$900/month'},  
-    { name: 'Property 15', sqFootage: '1300 sq. ft.', price: '$750/month'},  
-    { name: 'Property 16', sqFootage: '1000 sq. ft.', price: '$1000/month' },  
-    { name: 'Property 17', sqFootage: '1200 sq. ft.', price: '$1200/month' },  
-    { name: 'Property 18', sqFootage: '800 sq. ft.', price: '$800/month' },  
-    { name: 'Property 19', sqFootage: '1100 sq. ft.', price: '$900/month'},  
-    { name: 'Property 20', sqFootage: '1300 sq. ft.', price: '$750/month'}
+  public allProperties: PropertyTerm[] = []
 
-  ];
+  constructor(
+    private httpClient: HttpClient
+  ){}
+
+  async loadProperties() {
+    this.allProperties = await lastValueFrom(this.httpClient.get<PropertyTerm[]>('/api/properties'))
+  }
   
   @Output() propertySelected = new EventEmitter<any>();
   selectedProperty: any;
@@ -39,5 +38,7 @@ export class PropertyListComponent implements OnInit {
     this.selectedProperty = property;
     this.propertySelected.emit(property);
   }
-  ngOnInit() {}
+  async ngOnInit() {
+    await this.loadProperties()
+  }
 }
