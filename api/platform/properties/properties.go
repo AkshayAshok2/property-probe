@@ -77,7 +77,6 @@ func GetDescription(address string) (description string) {
 
 	if len(results) > 0 {
 		for _, value := range results {
-			fmt.Printf(value.URL + "\n")
 			if strings.HasPrefix(value.URL, "https://www.zillow.com") {
 				description = value.Description
 				break
@@ -89,18 +88,22 @@ func GetDescription(address string) (description string) {
 		reSqFt := regexp.MustCompile(`(\d+)\s+Square Feet`)
 
 		// Extract the number of beds, baths, and square footage from the string
-		bedsStr := reBeds.FindStringSubmatch(description)[1]
-		bathsStr := reBaths.FindStringSubmatch(description)[1]
-		sqFtStr := reSqFt.FindStringSubmatch(description)[1]
 
-		// Convert the extracted strings to integers
-		beds, _ := strconv.Atoi(bedsStr)
-		baths, _ := strconv.Atoi(bathsStr)
-		sqFt, _ := strconv.Atoi(sqFtStr)
+		if len(reBeds.FindStringSubmatch(description)) >= 2 && len(reBaths.FindStringSubmatch(description)) >= 2 && len(reSqFt.FindStringSubmatch(description)) >= 2 {
+			bedsStr := reBeds.FindStringSubmatch(description)[1]
+			bathsStr := reBaths.FindStringSubmatch(description)[1]
+			sqFtStr := reSqFt.FindStringSubmatch(description)[1]
 
-		// Format the resulting string
-		description = fmt.Sprintf("This property %d Square Feet home has %d baths and %d beds.", sqFt, baths, beds)
+			// Convert the extracted strings to integers
+			beds, _ := strconv.Atoi(bedsStr)
+			baths, _ := strconv.Atoi(bathsStr)
+			sqFt, _ := strconv.Atoi(sqFtStr)
 
+			// Format the resulting string
+			description = fmt.Sprintf("This property %d Square Feet home has %d baths and %d beds.", sqFt, baths, beds)
+		} else {
+			description = "Information about property is unavaliable."
+		}
 	}
 	return description
 }
