@@ -79,10 +79,21 @@ export class SearchComponent implements OnInit {
     '32610',
     '32615',
     '32618',
+    '32622',
     '32640',
+    '32641',
     '32643',
     '32653',
-    '32667'
+    '32667',
+    '32669',
+    '33012',
+    '33015',
+    '33055',
+    '33054',
+    '33142',
+    '33162',
+    '33181',
+
   ]
   selectedZipcode: string | null = null;
   showZipcodeDropdown = false;
