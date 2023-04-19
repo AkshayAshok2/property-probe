@@ -5,7 +5,12 @@ mat-card-header {
     text-align: left;
 }
 
-mat-card-content {
+.property mat-card-content {
     font-family: "Roboto";
     text-align: left;
+}
+
+.init mat-card-content {
+    font-family: "Roboto";
+    text-align: center;
 }

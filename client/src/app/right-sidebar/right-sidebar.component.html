@@ -1,13 +1,15 @@
 <div *ngIf="!property">
-    <mat-card>
+    <mat-card class="init">
         <mat-card-content>Select a property on the left to see more information!</mat-card-content>
     </mat-card>
 </div>
 
 <div *ngIf="property">
-    <mat-card color="primary">
+    <mat-card class="property">
         <mat-card-header bold>{{ property.address }}</mat-card-header>
-        <p></p>
+        <br>
+        <img mat-card-image src="../assets/images/mansion.png" alt="Placeholder image">
+        <br>
         <mat-card-content>Assessed value: ${{property.assessedvalue}}</mat-card-content>
         <mat-card-content>Date posted: {{property.date}}</mat-card-content>
         <mat-card-content>Description:</mat-card-content>
