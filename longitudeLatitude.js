@@ -47,7 +47,7 @@ const processFile = async (filename) => {
       output += line + '\n';
     }
   }
-  await writeFile(filename, output, 'utf8');
+  await writeFile('latlonproperties.txt', output, 'utf8');
 };
 
 processFile('properties.txt');
