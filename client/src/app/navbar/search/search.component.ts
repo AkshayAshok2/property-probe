@@ -1,113 +1,46 @@
 import { Component, HostListener, Output, EventEmitter, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { provideProtractorTestingSupport } from '@angular/platform-browser';
 import { of, interval, take, lastValueFrom } from 'rxjs';
 import { ViewChild } from '@angular/core';
 import { ElementRef } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
 import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
-// import { DataService } from 'src/app/data.service';
+import { HttpClient } from '@angular/common/http';
 
-// interface ISearchTerm {
-//   searchTerm: string
-// }
 
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.css']
 })
+
+
+
 export class SearchComponent implements OnInit {
   @Output() searchInfo = new EventEmitter<any>();
-  // public selected = ''
-  // public searchTerm = ''
-  // public searchHistory: ISearchTerm[] = []
-  // public zipCodes: number[] = []
 
-  // @ViewChild('zipCodeSearch') zipCodeSearchInput!: ElementRef;
 
-  // public dummyZipcodes: number[] = [
-  //   10000,
-  //   20000,
-  //   30000,
-  //   40000,
-  //   50000
-  // ]
-
-  // constructor(
-  //   private httpClient: HttpClient
-  // ){}
-
-  // ngOnInit() {
-  //   this
-  // }
-
-  // private getZipCodes() {
-  //   return this.dummyZipcodes
-  //   // implement to get zipcodes from backend
-  // }
-
-  // async loadSearches() {
-  //   this.searchHistory = await lastValueFrom(this.httpClient.get<ISearchTerm[]>('/api/search'))
-  // }
-
-  // loadZipcodes() {
-  //   console.log(this.zipCodeSearchInput.nativeElement.value)
-  // }
-
-  // async search() {
-  //   await lastValueFrom(this.httpClient.post('/api/search', {
-  //     searchTerm: this.searchTerm
-  //   }))
-
-  //   await this.loadSearches()
-  //   this.searchTerm = ''
-  // }
+  async loadZips() {
+    this.zipcodes = await lastValueFrom(this.httpClient.get<string[]>('/api/properties/zipcodes'));
+  }
 
   clickedInside = false;
   validInput: boolean = true;
   zipcodeForm: FormGroup;
-  // searchHistory: ISearchTerm[] = [];
-  zipcodes: string[] = [
-    'All zipcodes',
-    '32601',
-    '32602',
-    '32603',
-    '32604',
-    '32605',
-    '32606',
-    '32607',
-    '32608',
-    '32609',
-    '32610',
-    '32615',
-    '32618',
-    '32622',
-    '32640',
-    '32641',
-    '32643',
-    '32653',
-    '32667',
-    '32669',
-    '33012',
-    '33015',
-    '33055',
-    '33054',
-    '33142',
-    '33196',
-    '33162',
-    '33181',
 
+  zipcodes: string[] = [
+    'All zipcodes'
   ]
+  
   showZipcodeDropdown = false;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private httpClient: HttpClient) {
     this.zipcodeForm = this.fb.group({
       searchTerm: ['']
     });
   }
 
-  ngOnInit(): void {}
+  async ngOnInit() {await this.loadZips}
 
   toggleZipcodeDropdown(): void {
     this.showZipcodeDropdown = !this.showZipcodeDropdown;
