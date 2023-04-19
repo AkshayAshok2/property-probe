@@ -69,6 +69,7 @@ export class SearchComponent implements OnInit {
   zipcodeForm: FormGroup;
   // searchHistory: ISearchTerm[] = [];
   zipcodes: string[] = [
+    'All zipcodes',
     '32601',
     '32602',
     '32603',

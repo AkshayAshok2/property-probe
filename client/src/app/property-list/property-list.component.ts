@@ -22,7 +22,15 @@ interface PropertyTerm {
 export class PropertyListComponent implements OnInit {
   @Input() zip!: string | null;
   propertyClicked: boolean = false;
-  propertySearched: boolean = false;
+  propertiesExist: boolean = true;
+  public allProperties: PropertyTerm[] = []
+
+  // if (this.zip != null) {
+    
+  // }
+  // else {
+
+  // }
 
   onElementClick(property: any) {
     this.propertyClicked = true;
@@ -35,17 +43,23 @@ export class PropertyListComponent implements OnInit {
       this.onSelect(null);
     }
     this.propertyClicked = false;
-    console.log(`Zipcode received: ${this.zip}`);
+    console.log(`Zipcode received at property list: ${this.zip}`);
   }
-
-  public allProperties: PropertyTerm[] = []
 
   constructor(
     private httpClient: HttpClient
   ){}
 
   async loadProperties() {
-    this.allProperties = await lastValueFrom(this.httpClient.get<PropertyTerm[]>('/api/properties'))
+    if (this.zip === 'All zipcodes')
+      this.allProperties = await lastValueFrom(this.httpClient.get<PropertyTerm[]>('/api/properties/'));
+    else
+      this.allProperties = await lastValueFrom(this.httpClient.get<PropertyTerm[]>('/api/properties/' + this.zip));
+    
+    if (this.allProperties.length === 0)
+      this.propertiesExist = false;
+    else
+      this.propertiesExist = true;
   }
   
   @Output() propertySelected = new EventEmitter<any>();
@@ -56,6 +70,10 @@ export class PropertyListComponent implements OnInit {
     this.propertySelected.emit(property);
   }
   async ngOnInit() {
+    await this.loadProperties()
+  }
+
+  async ngOnChanges() {
     await this.loadProperties()
   }
 }
