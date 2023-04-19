@@ -5,7 +5,12 @@
 </div>
 
 <div *ngIf="property">
-    <h2 style="order: 1; width: 100%;flex-flow: row wrap;">{{ property.address }}</h2>
-    <p style="order: 2; column-count: 2;">{{ property.assessedvalue }} - {{ property.date }}</p>
-    <p> {{ property.description }}</p>
+    <mat-card color="primary">
+        <mat-card-header bold>{{ property.address }}</mat-card-header>
+        <p></p>
+        <mat-card-content>Assessed value: ${{property.assessedvalue}}</mat-card-content>
+        <mat-card-content>Date posted: {{property.date}}</mat-card-content>
+        <mat-card-content>Description:</mat-card-content>
+        <mat-card-content style="font-style:italic">{{ property.description }}</mat-card-content>
+    </mat-card>
 </div>

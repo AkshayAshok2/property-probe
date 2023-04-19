@@ -1,5 +1,9 @@
 mat-grid-tile {
-  background-color: lightgray;
+  background-color: lightblue;
+}
+
+.app-navbar {
+  z-index: 1;
 }
 
 #homePageTitleText {

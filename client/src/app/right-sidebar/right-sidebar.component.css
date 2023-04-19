@@ -1,4 +1,11 @@
+mat-card-header {
+    font-weight: bold;
+    font-size: 16px;
+    font-family: "Roboto";
+    text-align: left;
+}
+
 mat-card-content {
     font-family: "Roboto";
-    text-align: center;
+    text-align: left;
 }
