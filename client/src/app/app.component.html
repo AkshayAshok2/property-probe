@@ -1,10 +1,10 @@
-<app-navbar></app-navbar>
+<app-navbar (searchInfo)="searchTerm = $event"></app-navbar>
 <mat-grid-list cols="4" rowHeight="fit" style="height: 93%" gutterSize="0px">
   <mat-grid-tile id="left-sidebar">
-    <property-container (propertySelected)="selectedProperty = $event"></property-container>
+    <property-container (propertySelected)="selectedProperty = $event" [zip]="searchTerm"></property-container>
   </mat-grid-tile>
   <mat-grid-tile id="main-content" colspan="2">
-    <map-container></map-container>
+    <map-container [zip]="searchTerm"></map-container>
   </mat-grid-tile>
   <mat-grid-tile id="right-sidebar">
     <app-right-sidebar [property]="selectedProperty"></app-right-sidebar>

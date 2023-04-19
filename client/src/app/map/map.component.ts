@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import Map from 'ol/Map';
 import View from 'ol/View';
 import TileLayer from 'ol/layer/Tile';
@@ -20,6 +20,7 @@ interface PropertyTerm {
   styleUrls: ['./map.component.css'],
 })
 export class MapMaker implements OnInit {
+  @Input() zip!: string | null;
   public allProperties: PropertyTerm[] = []
 
   constructor(
@@ -34,16 +35,16 @@ export class MapMaker implements OnInit {
   async ngOnInit() {
     await this.loadProperties()
     let centerCoordinates = [-82.324,29.654];
-    let zipCode = '32601'; 
+    if (!this.zip) this.zip = '32601'; 
 
     // Check if zip code is in Gainesville and set center coordinates accordingly
-    if (zipCode === '32601') {
+    if (this.zip === '32601') {
       centerCoordinates = [-82.32146, 29.63964];
-    } else if (zipCode === '32603') {
+    } else if (this.zip === '32603') {
       centerCoordinates = [-82.35590, 29.65082];
-    } else if (zipCode === '32605') {
+    } else if (this.zip === '32605') {
       centerCoordinates = [-82.38564, 29.68129];
-    } else if (zipCode === '32606') {
+    } else if (this.zip === '32606') {
       centerCoordinates = [-82.44238, 29.68419];
     }
 

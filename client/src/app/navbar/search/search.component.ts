@@ -1,12 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, Output, EventEmitter, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { provideProtractorTestingSupport } from '@angular/platform-browser';
 import { of, interval, take, lastValueFrom } from 'rxjs';
 import { ViewChild } from '@angular/core';
 import { ElementRef } from '@angular/core';
-
-import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
+import { FormBuilder, FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
 import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
+import { DataService } from 'src/app/data.service';
 
 interface ISearchTerm {
   searchTerm: string
@@ -18,6 +18,7 @@ interface ISearchTerm {
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit {
+  @Output() searchInfo = new EventEmitter<any>();
   // public selected = ''
   // public searchTerm = ''
   // public searchHistory: ISearchTerm[] = []
@@ -63,6 +64,7 @@ export class SearchComponent implements OnInit {
   //   this.searchTerm = ''
   // }
 
+  clickedInside = false;
   validInput: boolean = true;
   zipcodeForm: FormGroup;
   searchHistory: ISearchTerm[] = [];
@@ -95,7 +97,6 @@ export class SearchComponent implements OnInit {
     '33181',
 
   ]
-  selectedZipcode: string | null = null;
   showZipcodeDropdown = false;
 
   constructor(private fb: FormBuilder) {
@@ -122,8 +123,7 @@ export class SearchComponent implements OnInit {
 
   selectZipcode(zipcode: string): void {
     this.zipcodeForm.get('searchTerm')?.setValue(zipcode);
-    this.selectedZipcode = zipcode;
-    this.showZipcodeDropdown = false;
+    this.deactivateDropdown();
   }
 
   searchValidator(search: string | null): boolean {
@@ -132,19 +132,38 @@ export class SearchComponent implements OnInit {
     return false;
   }
 
-  searchByZipcode(): void {
+  searchByZipcode() {
     this.deactivateDropdown()
     const searchTerm = this.zipcodeForm.get('searchTerm')?.value;
     // const searchTerm = this.selectedZipcode
     this.zipcodeForm.reset()
 
     if (!this.searchValidator(searchTerm)) {
-      console.log("Input incorrect! You shall not pass.")
+      console.log("Input incorrect! You shall not pass.");
       this.validInput = false;
       return;
     }
     this.validInput = true;
     this.searchHistory.unshift({ searchTerm });
     console.log(`Search by zipcode: ${searchTerm}`);
+
+    console.log(`Does zip move? ${searchTerm}`);
+    this.searchInfo.emit(searchTerm);
+  }
+
+  // turn off dropdown if click outside of search box
+  
+
+  onElementClick() {
+    this.clickedInside = true;
+    this.activateDropdown()
+  }
+
+  @HostListener('document:click')
+  onDocumentClick() {
+    if (!this.clickedInside) {
+      this.deactivateDropdown()
+    }
+    this.clickedInside = false;
   }
 }
