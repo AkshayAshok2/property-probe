@@ -117,3 +117,23 @@ func GetZipCode(address string) string {
 		return ""
 	}
 }
+
+func GetUniqueZipCodes(db *gorm.DB) ([]string, error) {
+	var properties []Property
+	GetAllProperties(db, &properties)
+
+	uniqueZipCodes := make(map[string]bool) // Map to store unique zip codes
+	for _, property := range properties {
+		zipCode := GetZipCode(property.Address)
+		if zipCode != "" {
+			uniqueZipCodes[zipCode] = true
+		}
+	}
+
+	var zipCodeList []string // List to store unique zip codes
+	for zipCode := range uniqueZipCodes {
+		zipCodeList = append(zipCodeList, zipCode)
+	}
+
+	return zipCodeList, nil
+}

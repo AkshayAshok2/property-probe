@@ -28,25 +28,10 @@ export class MapMaker implements OnInit {
   ){}
   
   async loadProperties() {
-    this.allProperties = await lastValueFrom(this.httpClient.get<PropertyTerm[]>('/api/properties'))
+    this.allProperties = await lastValueFrom(this.httpClient.get<PropertyTerm[]>('/api/properties/'));
   }
-  map: Map = new Map;
-  
-  async ngOnInit() {
-    await this.loadProperties()
+  async makeMap(){
     let centerCoordinates = [-82.324,29.654];
-    if (!this.zip) this.zip = '32601'; 
-
-    // Check if zip code is in Gainesville and set center coordinates accordingly
-    if (this.zip === '32601') {
-      centerCoordinates = [-82.32146, 29.63964];
-    } else if (this.zip === '32603') {
-      centerCoordinates = [-82.35590, 29.65082];
-    } else if (this.zip === '32605') {
-      centerCoordinates = [-82.38564, 29.68129];
-    } else if (this.zip === '32606') {
-      centerCoordinates = [-82.44238, 29.68419];
-    }
 
     this.map = new Map({
       view: new View({
@@ -87,6 +72,58 @@ export class MapMaker implements OnInit {
 
     // add layer to map
     this.map.addLayer(markerLayer);
-    
-    } 
+  }
+
+  CenterMap() {
+    let centerCoordinates = [-82.324,29.654];
+
+    // Check if zip code is in Gainesville and set center coordinates accordingly
+    if (this.zip === '32601') {
+      centerCoordinates = [-82.32146, 29.63964];
+    } else if (this.zip === '32603') {
+      centerCoordinates = [-82.35590, 29.65082];
+    } else if (this.zip === '32605') {
+      centerCoordinates = [-82.38564, 29.68129];
+    } else if (this.zip === '32606') {
+      centerCoordinates = [-82.44238, 29.68419];
+    }else if (this.zip === '32669') {
+      centerCoordinates = [-82.6267, 29.6534];
+    }else if (this.zip === '33196') {
+      centerCoordinates = [-80.4667, 25.6698];
+    }else if (this.zip === '33186') {
+      centerCoordinates = [-80.3993, 25.6654];
+    }else if (this.zip === '33015') {
+      centerCoordinates = [-80.3269, 25.9359];
+    }else if (this.zip === '33165') {
+      centerCoordinates = [-80.3547, 25.7328];
+    }else if (this.zip === '33125') {
+      centerCoordinates = [-80.2349, 25.7862];
+    }else if (this.zip === '33147') {
+      centerCoordinates = [-80.2377, 25.8479];
+    }else if (this.zip === '33149') {
+      centerCoordinates = [-80.1596, 25.7138];
+    }else if (this.zip === '33169') {
+      centerCoordinates = [-80.2154, 25.9401];
+    }else if (this.zip === '33032') {
+      centerCoordinates = [-80.3770, 25.5232];
+    }else if (this.zip === '33055') {
+      centerCoordinates = [-80.2823, 25.9446];
+    }
+
+    console.log(fromLonLat(centerCoordinates));
+    this.map.getView().setCenter(fromLonLat(centerCoordinates));
+    this.map.getView().setZoom(12);
+  }
+
+  map: Map = new Map;
+  
+
+  async ngOnInit() {
+    await this.loadProperties()
+    await this.makeMap()
+  } 
+  async ngOnChanges() {
+    await this.loadProperties()
+    this.CenterMap()
+  }
 }

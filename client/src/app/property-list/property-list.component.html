@@ -4,7 +4,13 @@
   </mat-card>
 </div>
 
-<div *ngIf="zip">
+<div *ngIf="zip && !propertiesExist">
+  <mat-card>
+    <mat-card-content>Sorry, we couldn't find any available properties with that ZIP code.</mat-card-content>
+  </mat-card>
+</div>
+
+<div *ngIf="zip && propertiesExist">
   <div class="container">
     <div class="virtual-scrolling">
       <mat-list class="scrolling-container mat-elevation-z7">

@@ -1,4 +1,4 @@
-<app-navbar (searchInfo)="searchTerm = $event"></app-navbar>
+<app-navbar (searchInfo)="receiveSearchInfo($event)"></app-navbar>
 <mat-grid-list cols="4" rowHeight="fit" style="height: 93%" gutterSize="0px">
   <mat-grid-tile id="left-sidebar">
     <property-container (propertySelected)="selectedProperty = $event" [zip]="searchTerm"></property-container>
