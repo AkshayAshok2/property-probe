@@ -1,5 +1,10 @@
+mat-card-content {
+  font-family: "Roboto";
+  text-align: center;
+}
+
 .container {
-  background-color: darkgrey;
+  background-color: whitesmoke;
   display: flex;
   font-family: "Roboto";
   height: 94vh;
@@ -21,7 +26,7 @@
 .mat-mdc-list-item {
   display: flex;
   flex: 45%;
-  border: 1px solid black;
+  border: 1px solid slategrey;
   background-color: whitesmoke;
 }
 .mdc-list-item.mdc-list-item--with-one-line{
@@ -30,19 +35,19 @@
 .property-box {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: left;
 }
 
 .property-name {
   font-family: "Roboto";
   font-size: 13px;
   font-weight: bold;
-  text-align: center;
+  text-align: left;
   margin-bottom: 1px;
 }
 
 .property-price {
   font-family: "Roboto";
   font-size: 18px;
-  text-align: center;
+  text-align: left;
 }
