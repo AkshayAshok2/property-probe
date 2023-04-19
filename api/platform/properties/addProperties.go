@@ -109,8 +109,6 @@ func AddPropertiesToDatbase() {
 		property.ZipCode = GetZipCode(property.Address)
 		if property.Address != "" {
 			CreatePropertyWithNoConnectionParam(&property)
-			fmt.Printf("Date: %s\nAuction Type: %s\nJudgementAmount: %.2f\nAddress: %s\nAssessed Value: %.2f\nLatLon: %s\n\n",
-				property.Date, property.AuctionType, property.JudgementAmount, property.Address, property.AssessedValue, property.LatLon)
 		}
 	}
 }
