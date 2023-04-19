@@ -29,7 +29,7 @@ export class SearchComponent implements OnInit {
   zipcodeForm: FormGroup;
 
   zipcodes: string[] = [
-    'All zipcodes'
+    'All zipcodes',
   ]
   
   showZipcodeDropdown = false;
@@ -70,7 +70,6 @@ export class SearchComponent implements OnInit {
   searchByZipcode() {
     this.deactivateDropdown()
     const searchTerm = this.zipcodeForm.get('searchTerm')?.value;
-    // const searchTerm = this.selectedZipcode
     this.zipcodeForm.reset()
 
     if (!this.searchValidator(searchTerm)) {
