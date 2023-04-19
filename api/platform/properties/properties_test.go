@@ -165,10 +165,11 @@ func TestGetProperty(t *testing.T) {
 	DeleteProperty(db, &property, property.Address)
 }
 
-func TestGetDescription(t *testing.T) {
-	description := GetDescription("1013 Fieldstone Drive, 32940")
-	assert.Equal(t, description, "This property 1921 Square Feet home has 3 baths and 2 beds.")
-}
+// // Unreliable test based on scraping issues due to Google rearranging search results
+// func TestGetDescription(t *testing.T) {
+// 	description := GetDescription("1013 Fieldstone Drive, 32940")
+// 	assert.Equal(t, description, "This property 1921 Square Feet home has 3 baths and 2 beds.")
+// }
 
 func TestGetZipCodeProperties(t *testing.T) {
 	dsn := "go:Gators123@tcp(cen3031-project.mysql.database.azure.com:3306)/listings?charset=utf8mb4&parseTime=True&loc=Local"
