@@ -20,7 +20,7 @@ main {
 }
 .map-container {
     flex-grow: 1;
-    width: 98vh;
+    width: 49.3vw;
 }
 .ol-attribution {
     left: 10px;

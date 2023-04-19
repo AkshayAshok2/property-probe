@@ -1,3 +1,89 @@
+.invalid {
+  /* background-color: whitesmoke; */
+  /* opacity: 90%; */
+  position: absolute;
+  margin-right: 130px;
+  margin-top: 52px;
+  /* background-color: aliceblue; */
+  font-size: 11px;
+  color: white;
+  opacity: 1;
+}
+
+form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-button {
+  position: relative;
+  margin-top: 6%;
+  height: 40px;
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.zipcode-input-container {
+  position: relative;
+}
+
+input[type="text"] {
+  border-radius: 4px;
+  padding: 10px;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  font-size: 16px;
+  margin-top: 8%;
+  margin-right: 5px;
+}
+
+button {
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  width: 100px;
+}
+
+.zipcode-dropdown {
+  color: black;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  position: absolute;
+  z-index: 1;
+  background-color: whitesmoke;
+  max-height: 150px;
+  overflow-y: auto;
+}
+
+.zipcode-dropdown li {
+  padding: 5px;
+  cursor: pointer;
+}
+
+.zipcode-dropdown li:hover {
+  background-color: lightblue;
+}
+
+.zipcode-dropdown li.active {
+  background-color: #007bff;
+  color: #fff;
+}
+
+
+mat-form-field {
+  width: 30%;
+  height: 8.5vh;
+}
 
 .container {
     padding: 4rem;
@@ -36,13 +122,14 @@
   }
   
   .input-container {
-    margin-top: 10px;
     display: flex;
-    height: 50px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
   }
   
   .input-container button {
-    margin-right: auto;
+    margin-right: 10%;
     width: 7%;
     height: 75%;
     border: none;

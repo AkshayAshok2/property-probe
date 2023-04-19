@@ -1,13 +1,45 @@
-<div class="app-search">
-  <div class="input-container">
-    <input
-      [(ngModel)]="search_term" 
-      type="text"
-      placeholder="Search properties">
-    <button mat-raised-button (click)="search()">Search</button>
-  </div>
-  <div *ngFor="let searchHistory of searchHistory">
-    <div class="searchHistory">SearchTerm: {{ searchHistory.search_term }}</div>
-  </div>
+<!-- <div class="input-container">
+  <input
+    [(ngModel)]="search_term" 
+    type="text"
+    placeholder="Search by zipcode...">
+  <button mat-raised-button (click)="search()">Search</button>
 </div>
-  
+
+<div *ngFor="let searchHistory of searchHistory">
+  <div class="searchHistory">SearchTerm: {{ searchHistory.search_term }}</div>
+</div> -->
+
+<!-- <div class="input-container">
+  <mat-form-field>
+    <mat-select multiple placeholder="Search by whatever...">
+      <input type="text" class="p-2" autocomplete="off" matInput placeholder="Search by name..." #zipCodeSearch (input)="search()">
+      <mat-option *ngFor="let zip of zipCodes" [value]="zip">{{zip}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <button mat-raised-button (click)="search()">Search</button>
+</div> -->
+
+<div class="search-container">
+  <form [formGroup]="zipcodeForm" (ngSubmit)="searchByZipcode()">
+    <div class="zipcode-input-container">
+      <input
+        type="text"
+        formControlName="searchTerm"
+        placeholder="Enter a ZIP code..."
+        (click)="toggleZipcodeDropdown()"
+        (keyup.esc)="deactivateDropdown()">
+      <ul class="zipcode-dropdown" *ngIf="showZipcodeDropdown">
+        <li *ngFor="let zipcode of zipcodes" (click)="selectZipcode(zipcode)">
+          {{ zipcode }}
+        </li>
+      </ul>
+    </div>
+  <button mat-raised-button class="search-button">Search</button>
+  </form>
+  <small *ngIf="!validInput" class="invalid">Please enter a valid ZIP code.</small>
+  <!-- <div *ngFor="let search of searchHistory">
+    {{ search.searchTerm }}
+  </div> -->
+</div>
+

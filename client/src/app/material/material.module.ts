@@ -10,6 +10,8 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSelectModule } from '@angular/material/select';
+import { MatDialogModule } from '@angular/material/dialog';
 import { materialize } from 'rxjs';
 
 const MaterialComponents = [
@@ -24,7 +26,8 @@ const MaterialComponents = [
   MatMenuModule,
   MatProgressSpinnerModule,
   MatPaginatorModule,
-  
+  MatSelectModule,
+  MatDialogModule
 ];
 
 @NgModule({
