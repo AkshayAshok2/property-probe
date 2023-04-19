@@ -1,26 +1,28 @@
 .container {
-    font-family: "Roboto";
-    width: 100vw;
-    display: flex;
-    justify-content: space-around;
-    flex-flow: row wrap;
-    align-items: stretch;
-    margin:0;
-    padding:0;
-  }
+  background-color: darkgrey;
+  display: flex;
+  font-family: "Roboto";
+  height: 94vh;
+  width: 26kvw;
+  flex-flow: row wrap;
+  align-items: stretch;
+  margin:0;
+  padding:0;
+  justify-content: top;
+}
   
 .scrolling-container {
-    display: block;
-    width: 390px;
-    height: 88vh;
-    overflow-y: scroll;
+  display: block;
+  width: 24.5vw;
+  height: 91vh;
+  overflow-y: scroll;
 }
 
 .mat-mdc-list-item {
   display: flex;
   flex: 45%;
   border: 1px solid black;
-  background-color: #f1f1f1;
+  background-color: whitesmoke;
 }
 .mdc-list-item.mdc-list-item--with-one-line{
   height: 8vh;
@@ -32,13 +34,15 @@
 }
 
 .property-name {
-  font-size: 14px;
+  font-family: "Roboto";
+  font-size: 13px;
   font-weight: bold;
   text-align: center;
-  margin-bottom: 3px;
+  margin-bottom: 1px;
 }
 
 .property-price {
+  font-family: "Roboto";
   font-size: 18px;
   text-align: center;
 }
