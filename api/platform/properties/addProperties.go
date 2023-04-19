@@ -15,6 +15,7 @@ import (
 func CreatePropertyWithNoConnectionParam(property *Property) (err error) {
 	dsn := "go:Gators123@tcp(cen3031-project.mysql.database.azure.com:3306)/listings?charset=utf8mb4&parseTime=True&loc=Local"
 	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
+	defer db.Close()
 	CreateProperty(db, property)
 	return err
 }
