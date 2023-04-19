@@ -7,7 +7,7 @@ const fs = require('fs');
   const endDate = new Date();
   endDate.setDate(endDate.getDate() + 30);
 
-  fs.writeFileSync('properties.txt', '');
+  fs.appendFileSync('properties.txt', '');
   
   //launch and wait for page to load
   const browser = await puppeteer.launch();
@@ -25,7 +25,7 @@ const fs = require('fs');
         let formattedDate = (month < 10 ? "0" + month : month) + "/" + (day < 10 ? "0" + day : day) + "/" + year;
         //Sets the formatted date for the url loop
         
-        url = 'https://alachua.realforeclose.com/index.cfm?zaction=AUCTION&zmethod=PREVIEW&AUCTIONDATE=' + formattedDate;
+        url = 'https://miami.realforeclose.com/index.cfm?zaction=AUCTION&zmethod=PREVIEW&AUCTIONDATE=' + formattedDate;
         
         await page.goto(url);
       
@@ -50,13 +50,21 @@ const fs = require('fs');
               const label = $(row).find('th').text().trim();
               //Puts the city,state,zipcode on the same line as the address
             if (label === 'Property Address:') {
-              let data = $(row).find('td').text().trim();
-              let data2 = $(tableRows.eq(index + 1)).find('td').text().trim();
-              // Remove the "-" character from the address
-              data = data.replace(/-/g, '');
-              data2 = data2.replace(/-/g, '');
-              console.log(label, data, data2);
-              fs.appendFileSync('./properties.txt', label + ' ' + data + ' ' + data2 + '\n');
+                let data = $(row).find('td').text().trim();
+                let data2 = $(tableRows.eq(index + 1)).find('td').text().trim();
+                // Remove the first "-" character from the address
+                const firstDash = data.indexOf('-');
+                if (firstDash !== -1) {
+                    data = data.substring(0, firstDash) + data.substring(firstDash + 1);
+                }
+                const secondDash = data2.indexOf('-');
+                if (secondDash !== -1) {
+                    data2 = data2.substring(0, secondDash) + data2.substring(secondDash + 1);
+                }
+                console.log(label, data, data2);
+                fs.appendFileSync('./properties.txt', label + ' ' + data + ' ' + data2 + '\n');
+
+
             //Inserts the each row into the txt
             }else if(!(label === '')){
               const data = $(row).find('td').text().trim();
