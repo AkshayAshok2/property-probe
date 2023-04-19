@@ -4,7 +4,7 @@
         PropertyProbe
     </button>
     <span class="searchbar-spacer" justify="center">
-            <app-search></app-search>
+            <app-search (searchInfo)="receiveSearchInfo($event)"></app-search>
     </span>
     <button mat-raised-button click="signIn()">Sign In</button>
 </mat-toolbar>
