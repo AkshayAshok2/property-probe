@@ -10,10 +10,17 @@ import { interval, take, lastValueFrom } from 'rxjs';
 })
 export class AppComponent implements OnInit {
   selectedProperty: any;
+  searchTerm: any;
 
   onPropertySelected(property: any) {
     this.selectedProperty = property;
   }
+
+  receiveSearchInfo($event: string) {
+    this.searchTerm = $event;
+    console.log(`Search term received at app! ${this.searchTerm}`);
+  }
+
   ngOnInit() {}
 }
 

@@ -12,6 +12,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatCard, MatCardModule } from '@angular/material/card';
 import { materialize } from 'rxjs';
 
 const MaterialComponents = [
@@ -27,7 +28,8 @@ const MaterialComponents = [
   MatProgressSpinnerModule,
   MatPaginatorModule,
   MatSelectModule,
-  MatDialogModule
+  MatDialogModule,
+  MatCardModule
 ];
 
 @NgModule({

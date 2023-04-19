@@ -1,12 +1,26 @@
-<div class="container">
-  <div class="virtual-scrolling">
-    <mat-list class="scrolling-container mat-elevation-z7">
-      <mat-list-item *ngFor="let property of allProperties" (click)="onSelect(property)">
-        <div class="property-box">
-          <div class="property-name">{{property.address}}</div>
-          <div class="property-price">${{property.assessedvalue}} - {{property.date}}</div>
-        </div>
-      </mat-list-item>
-    </mat-list>
+<div *ngIf="!zip">
+  <mat-card>
+    <mat-card-content>Search properties by ZIP code and they'll show up here!</mat-card-content>
+  </mat-card>
+</div>
+
+<div *ngIf="zip && !propertiesExist">
+  <mat-card>
+    <mat-card-content>Sorry, we couldn't find any available properties with that ZIP code.</mat-card-content>
+  </mat-card>
+</div>
+
+<div *ngIf="zip && propertiesExist">
+  <div class="container">
+    <div class="virtual-scrolling">
+      <mat-list class="scrolling-container mat-elevation-z7">
+        <mat-list-item *ngFor="let property of allProperties" (click)="onElementClick(property)">
+          <div class="property-box">
+            <div class="property-name">{{property.address}}</div>
+            <div class="property-price">${{property.assessedvalue}} - {{property.date}}</div>
+          </div>
+        </mat-list-item>
+      </mat-list>
+    </div>
   </div>
 </div>
