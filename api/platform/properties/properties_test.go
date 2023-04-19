@@ -167,7 +167,7 @@ func TestGetProperty(t *testing.T) {
 
 func TestGetDescription(t *testing.T) {
 	description := GetDescription("1013 Fieldstone Drive, 32940")
-	assert.Equal(t, description, "The 2744 Square Feet single family home is a 3 beds, 2 baths property.")
+	assert.Equal(t, description, "This property 1921 Square Feet home has 3 baths and 2 beds.")
 }
 
 func TestGetZipCodeProperties(t *testing.T) {
