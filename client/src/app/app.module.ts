@@ -13,6 +13,7 @@ import { PropertyBoxComponent } from './property-list/property-box/property-box.
 // Change method of importing Material components using material module
 import { MaterialModule } from './material/material.module';
 import { RightSidebarComponent } from './right-sidebar/right-sidebar.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { RightSidebarComponent } from './right-sidebar/right-sidebar.component';
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    MaterialModule
+    MaterialModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
