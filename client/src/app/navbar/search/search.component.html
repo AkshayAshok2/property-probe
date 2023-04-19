@@ -27,7 +27,7 @@
         type="text"
         formControlName="searchTerm"
         placeholder="Enter a ZIP code..."
-        (click)="toggleZipcodeDropdown()"
+        (click)="onElementClick()"
         (keyup.esc)="deactivateDropdown()">
       <ul class="zipcode-dropdown" *ngIf="showZipcodeDropdown">
         <li *ngFor="let zipcode of zipcodes" (click)="selectZipcode(zipcode)">

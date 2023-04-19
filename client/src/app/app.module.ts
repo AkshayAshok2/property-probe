@@ -14,6 +14,7 @@ import { PropertyBoxComponent } from './property-list/property-box/property-box.
 import { MaterialModule } from './material/material.module';
 import { RightSidebarComponent } from './right-sidebar/right-sidebar.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HostListener } from '@angular/core';
 
 @NgModule({
   declarations: [

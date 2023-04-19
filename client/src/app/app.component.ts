@@ -10,10 +10,13 @@ import { interval, take, lastValueFrom } from 'rxjs';
 })
 export class AppComponent implements OnInit {
   selectedProperty: any;
+  searchTerm: any;
 
   onPropertySelected(property: any) {
     this.selectedProperty = property;
   }
+
+  
   ngOnInit() {}
 }
 
