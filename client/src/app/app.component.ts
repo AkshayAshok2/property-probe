@@ -16,7 +16,11 @@ export class AppComponent implements OnInit {
     this.selectedProperty = property;
   }
 
-  
+  receiveSearchInfo($event: string) {
+    this.searchTerm = $event;
+    console.log(`Search term received at app! ${this.searchTerm}`);
+  }
+
   ngOnInit() {}
 }
 
