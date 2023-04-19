@@ -6,11 +6,11 @@ import { ViewChild } from '@angular/core';
 import { ElementRef } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
 import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
-import { DataService } from 'src/app/data.service';
+// import { DataService } from 'src/app/data.service';
 
-interface ISearchTerm {
-  searchTerm: string
-}
+// interface ISearchTerm {
+//   searchTerm: string
+// }
 
 @Component({
   selector: 'app-search',
@@ -67,7 +67,7 @@ export class SearchComponent implements OnInit {
   clickedInside = false;
   validInput: boolean = true;
   zipcodeForm: FormGroup;
-  searchHistory: ISearchTerm[] = [];
+  // searchHistory: ISearchTerm[] = [];
   zipcodes: string[] = [
     '32601',
     '32602',
@@ -144,16 +144,12 @@ export class SearchComponent implements OnInit {
       return;
     }
     this.validInput = true;
-    this.searchHistory.unshift({ searchTerm });
+    // this.searchHistory.unshift({ searchTerm });
     console.log(`Search by zipcode: ${searchTerm}`);
-
-    console.log(`Does zip move? ${searchTerm}`);
     this.searchInfo.emit(searchTerm);
   }
 
   // turn off dropdown if click outside of search box
-  
-
   onElementClick() {
     this.clickedInside = true;
     this.activateDropdown()
