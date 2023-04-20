@@ -125,6 +125,10 @@ func GetUniqueZipCodes(db *gorm.DB) ([]string, error) {
 	uniqueZipCodes := make(map[string]bool) // Map to store unique zip codes
 	for _, property := range properties {
 		zipCode := GetZipCode(property.Address)
+		if strings.Contains(zipCode, "-") {
+			parts := strings.Split(zipCode, "-")
+			zipCode = parts[0]
+		}
 		if zipCode != "" {
 			uniqueZipCodes[zipCode] = true
 		}
@@ -134,6 +138,8 @@ func GetUniqueZipCodes(db *gorm.DB) ([]string, error) {
 	for zipCode := range uniqueZipCodes {
 		zipCodeList = append(zipCodeList, zipCode)
 	}
+	zipCodeList = append(zipCodeList, "Miami")
+	zipCodeList = append(zipCodeList, "Gainesville")
 
 	return zipCodeList, nil
 }

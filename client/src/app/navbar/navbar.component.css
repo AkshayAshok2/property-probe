@@ -3,10 +3,9 @@
   min-width: 400px;
 }
 
-/* .mat-toolbar.mat-primary {
-    background: rgb(58, 68, 121);
-    color: #fff;
-} */
+.mat-toolbar {
+  position: relative;
+}
 
 section {
     display: table;

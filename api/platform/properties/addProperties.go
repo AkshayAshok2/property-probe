@@ -8,16 +8,8 @@ import (
 	"strconv"
 	"strings"
 
-	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 )
-
-func CreatePropertyWithNoConnectionParam(property *Property) (err error) {
-	dsn := "go:Gators123@tcp(cen3031-project.mysql.database.azure.com:3306)/listings?charset=utf8mb4&parseTime=True&loc=Local"
-	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
-	CreateProperty(db, property)
-	return err
-}
 
 func parseAmount(amount string) (float64, error) {
 	amount = strings.Replace(amount, "$", "", -1)
@@ -25,7 +17,7 @@ func parseAmount(amount string) (float64, error) {
 	return strconv.ParseFloat(amount, 64)
 }
 
-func AddPropertiesToDatbase() {
+func AddPropertiesToDatbase(db *gorm.DB) {
 	// get the current working directory
 	cwd, err := os.Getwd()
 	if err != nil {
@@ -108,7 +100,7 @@ func AddPropertiesToDatbase() {
 		property.Description = GetDescription(property.Address)
 		property.ZipCode = GetZipCode(property.Address)
 		if property.Address != "" {
-			CreatePropertyWithNoConnectionParam(&property)
+			CreateProperty(db, &property)
 		}
 	}
 }

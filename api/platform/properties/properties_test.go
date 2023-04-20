@@ -224,3 +224,44 @@ func TestGetZipCode(t *testing.T) {
 	assert.Equal(t, zip, "32615")
 
 }
+
+func TestGetUnqiueZipCodes(t *testing.T) {
+	dsn := "go:Gators123@tcp(cen3031-project.mysql.database.azure.com:3306)/listings?charset=utf8mb4&parseTime=True&loc=Local"
+	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
+	assert.NoError(t, err)
+	assert.NotNil(t, db)
+
+	// Migrate the database schema
+	err = db.AutoMigrate(Property{})
+	assert.NoError(t, err)
+
+	err = db.Exec("DELETE FROM properties").Error
+	assert.NoError(t, err)
+
+	prop := Property{
+		AuctionType:     "private",
+		JudgementAmount: 12345.67,
+		Address:         "123 Main Street",
+		AssessedValue:   9876.54,
+		ZipCode:         "32940",
+		Description:     "2400 sqft, 2 bed 3 bath",
+	}
+	CreateProperty(db, &prop)
+
+	prop = Property{
+		AuctionType:     "public",
+		JudgementAmount: 12345.67,
+		Address:         "123 Main Street",
+		AssessedValue:   9876.54,
+		ZipCode:         "32941",
+		Description:     "2400 sqft, 2 bed 3 bath",
+	}
+
+	// Get zipcodes
+	zipcodes, err := GetUniqueZipCodes(db)
+
+	assert.NoError(t, err)
+	assert.Len(t, zipcodes, 2)
+
+	DeleteProperty(db, &prop, prop.Address)
+}
