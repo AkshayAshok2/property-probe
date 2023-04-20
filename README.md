@@ -17,10 +17,23 @@ To run and use PropertyProbe, you'll need:
 git clone https://github.com/AkshayAshok2/CEN3031-Project.git
 ```
 
-2. Run the shell script to install the required packages, run the Angular server, and start the Go server:
+2. 
+Option 1: If on Mac OS or Linux, run the shell script to install the required packages, run the Angular server, and start the Go server:
 
 ```
 ./run.sh
+```
+
+Option 2: If on Windows, navigate to the `client` directory, install the required packages, and start the Angular development server: 
+```
+cd client
+npm install
+npm run start &
+```
+In a separate terminal window, navigate to the `api` directory and start the Go server:
+```
+cd ../api
+go run httpd/main.go
 ```
 
 3. Open `http://localhost:4200` in your web browser to access PropertyProbe.
