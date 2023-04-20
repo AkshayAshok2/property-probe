@@ -18,7 +18,7 @@ import { HttpClient } from '@angular/common/http';
 
 export class SearchComponent implements OnInit {
   @Output() searchInfo = new EventEmitter<any>();
-
+  public zipcodes: string[] = []
 
   async loadZips() {
     this.zipcodes = await lastValueFrom(this.httpClient.get<string[]>('/api/properties/zipcodes'));
@@ -28,8 +28,8 @@ export class SearchComponent implements OnInit {
   validInput: boolean = true;
   zipcodeForm: FormGroup;
 
-  zipcodes: string[] = [
-    'All zipcodes',
+  // zipcodes: string[] = [
+  //   'All zipcodes',
     // '32606',
     // '32607',
     // '32615',
@@ -68,7 +68,7 @@ export class SearchComponent implements OnInit {
     // '33186',
     // '33189',
     // '33196'
-  ]
+   //]
   
   showZipcodeDropdown = false;
 
@@ -78,7 +78,9 @@ export class SearchComponent implements OnInit {
     });
   }
 
-  async ngOnInit() {await this.loadZips}
+  async ngOnInit() {
+    await this.loadZips()
+  }
 
   toggleZipcodeDropdown(): void {
     this.showZipcodeDropdown = !this.showZipcodeDropdown;
