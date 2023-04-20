@@ -253,7 +253,7 @@ func TestGetUnqiueZipCodes(t *testing.T) {
 		JudgementAmount: 12345.67,
 		Address:         "123 Main Street",
 		AssessedValue:   9876.54,
-		ZipCode:         "32941",
+		ZipCode:         "32940",
 		Description:     "2400 sqft, 2 bed 3 bath",
 	}
 
@@ -261,7 +261,5 @@ func TestGetUnqiueZipCodes(t *testing.T) {
 	zipcodes, err := GetUniqueZipCodes(db)
 
 	assert.NoError(t, err)
-	assert.Len(t, zipcodes, 2)
-
-	DeleteProperty(db, &prop, prop.Address)
+	assert.Len(t, zipcodes, 1)
 }
