@@ -135,11 +135,10 @@ func GetUniqueZipCodes(db *gorm.DB) ([]string, error) {
 	}
 
 	var zipCodeList []string // List to store unique zip codes
+	zipCodeList = append(zipCodeList, "All zipcodes")
 	for zipCode := range uniqueZipCodes {
 		zipCodeList = append(zipCodeList, zipCode)
 	}
-	zipCodeList = append(zipCodeList, "Miami")
-	zipCodeList = append(zipCodeList, "Gainesville")
 
 	return zipCodeList, nil
 }
