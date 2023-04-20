@@ -165,7 +165,7 @@ To retrieve unique zip code based on properties, call the GetUniqueZipCodes func
 ```
 zipCodeList, err := properties.GetUniqueZipCodes(repository.Db)
 if err != nil {
-		panic(err)
-	}
+	panic(err)
+}
 
 ```
