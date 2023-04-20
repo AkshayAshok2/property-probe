@@ -215,4 +215,48 @@ func TestGetProperty(t *testing.T) {
 	database.ClearDB()
 }
 
-// func TestUpdateProperty(t *testing.T) {
+func TestGetUniqueZipCodes(t *testing.T) {
+	// Initialize a new router and repository
+	r := gin.Default()
+	repo := New()
+
+	// Add a few properties to the database
+	properties_ := []properties.Property{
+		{AuctionType: "type1", JudgementAmount: 100, Address: "addr1", AssessedValue: 200, Description: "desc1", ZipCode: "12345"},
+		{AuctionType: "type2", JudgementAmount: 200, Address: "addr2", AssessedValue: 300, Description: "desc2", ZipCode: "23456"},
+		{AuctionType: "type3", JudgementAmount: 300, Address: "addr3", AssessedValue: 400, Description: "desc3", ZipCode: "12345"},
+	}
+	for _, p := range properties_ {
+		err := repo.Db.Create(&p).Error
+		if err != nil {
+			t.Fatalf("Failed to create property: %v", err)
+		}
+	}
+
+	// Create a new HTTP request to get properties with zip code "12345"
+	req, err := http.NewRequest("GET", "/properties/zipcodes", nil)
+	if err != nil {
+		t.Fatalf("Failed to create request: %v", err)
+	}
+
+	// Create a new HTTP recorder to capture the response
+	rr := httptest.NewRecorder()
+
+	// Call GetAllProperties with the request and recorder
+	r.GET("/properties/zipcodes", repo.GetUniqueZipCodes)
+	r.ServeHTTP(rr, req)
+
+	// Check that the status code is OK
+	assert.Equal(t, http.StatusOK, rr.Code)
+
+	//Parse the response body into a slice of properties
+	var response []string
+	err = json.Unmarshal(rr.Body.Bytes(), &response)
+	if err != nil {
+		t.Fatalf("Failed to parse response body: %v", err)
+	}
+
+	// Check that we only got 2 unique zip codes
+	assert.Equal(t, len(response), 2)
+
+}
