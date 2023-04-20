@@ -7,7 +7,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 })
 export class NavbarComponent {
   @Input() searchTerm!: string;
-  @Output() searchInfo = new EventEmitter<any>;
+  @Output() searchInfo = new EventEmitter<any>();
 
   receiveSearchInfo($event: string) {
     this.searchTerm = $event;

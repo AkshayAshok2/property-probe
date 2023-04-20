@@ -26,7 +26,7 @@ func main() {
 		panic(err)
 	}
 
-	properties.AddPropertiesToDatbase()
+	properties.AddPropertiesToDatbase(db)
 
 	r := gin.Default()
 
