@@ -1,6 +1,7 @@
 ### Work Completed:
 
 > Frontend
+
 **Overall UI:** This sprint, we completed all functional aspects of the user interface and made aesthetic improvements in terms of colors, shapes, and alignment.
 
 **Property Map:** The map now shows the locations of all properties with location data. Additionally, the map component of the UI was revamped to re-center based on the location of the user's queried properties.
@@ -10,6 +11,7 @@
 **Property Descriptions:** We added more detailed descriptions for properties with such information available, including bed/bath and square footage. We also added a visual component to the individual property descriptions.
 
 > Backend
+
 **Property Info:** With all the properties now displaying in the frontend, we decided to get more information about the properties themselves, by scraping data about the square footage and number of bed and baths.
 
 **More Properties:** With our scraping algorithmn working, we decided to add more cities, with the first being the Miami area. PropertyProbe now displays all the preforeclosure properties in Gainesville and Miami.
