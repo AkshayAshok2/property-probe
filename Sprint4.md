@@ -16,8 +16,6 @@
 
 **Property API:** In addition to all the methods that will be crucial to utilizing our MYSQL database in the future including add, remove, search, and update, the backend team also added a GetUniqueZipCodes Get call that will produce an array of unique zip codes that has the properties. This will allow the frontend to easily retrieve the zip codes needed for the drop-down menu. 
 
-**Frontend Progress:** 
-
 
 ### Frontend Unit Tests:
 
@@ -52,6 +50,8 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TestGetZipCodeProperties
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TestGetZipCode
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TestGetUniqueZipCodes
 
 &nbsp;&nbsp;&nbsp;&nbsp;**properties_controller_test.go:**
 
